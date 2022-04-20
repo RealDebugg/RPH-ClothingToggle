@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ec45110d-d5e0-44ba-a6f6-c7cea024413c": {
+      "ProjectGuid": "ec45110d-d5e0-44ba-a6f6-c7cea024413c",
+      "DisplayName": "outfitToggler",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

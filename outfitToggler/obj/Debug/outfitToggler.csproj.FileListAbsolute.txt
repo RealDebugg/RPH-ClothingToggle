@@ -1,0 +1,9 @@
+C:\Users\naim1\Desktop\outfitToggler\obj\Debug\outfitToggler.csproj.AssemblyReference.cache
+C:\Users\naim1\Desktop\outfitToggler\obj\Debug\outfitToggler.csproj.CoreCompileInputs.cache
+C:\Users\naim1\Desktop\outfitToggler\bin\Debug\outfitToggler.dll
+C:\Users\naim1\Desktop\outfitToggler\bin\Debug\outfitToggler.pdb
+C:\Users\naim1\Desktop\outfitToggler\bin\Debug\RAGENativeUI.dll
+C:\Users\naim1\Desktop\outfitToggler\bin\Debug\RagePluginHookSDK.dll
+C:\Users\naim1\Desktop\outfitToggler\obj\Debug\outfitToggler.csproj.CopyComplete
+C:\Users\naim1\Desktop\outfitToggler\obj\Debug\outfitToggler.dll
+C:\Users\naim1\Desktop\outfitToggler\obj\Debug\outfitToggler.pdb
