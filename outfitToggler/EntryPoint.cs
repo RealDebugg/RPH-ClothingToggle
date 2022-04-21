@@ -14,6 +14,7 @@ namespace outfitToggler
         private static MenuPool pool;
         private static UIMenu mainMenu;
         private static Keys KeyBinding;
+        private static Props pedProps = new Props();
 
         public static InitializationFile initialiseFile()
         {
