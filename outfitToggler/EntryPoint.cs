@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Rage;
 using Rage.Attributes;
+using Rage.Native;
 using RAGENativeUI;
 using RAGENativeUI.Elements;
 using RAGENativeUI.PauseMenu;
@@ -135,6 +136,7 @@ namespace outfitToggler
         private static void ToggleVariation(int comp, int draw, int tex) 
         {
             Ped myChar = Game.LocalPlayer.Character;
+            PoolHandle charHand = myChar.Handle;
             //myChar.SetVariation(comp, draw, tex); // int componentIndex, int drawableIndex, int drawableTextureIndex
             //public void GetVariation(
             //  int componentIndex,
@@ -143,11 +145,19 @@ namespace outfitToggler
             //)
         }
 
-        private static void ToggleProp(int prop, int draw, int tex) 
+        private static bool ToggleProp(int prop) 
         {
             Ped myChar = Game.LocalPlayer.Character;
-            //SetPedPropIndex(Ped, Prop.Prop, Last.Prop, Last.Texture, true) -- FiveM
-            //ClearPedProp(Ped, v.Id) -- FiveM
+            int currentProp = NativeFunction.Natives.GetPedPropIndex<int>(myChar, true);
+            if (currentProp != -1) //and last is null
+            {
+                Game.DisplayNotification("haha yes.");
+                return true;
+            } else
+            {
+                Game.DisplayNotification("You dont appear to have anything to remove.");
+                return false;
+            }
         }
         private static void SwitchClothing(int id)
         {
@@ -159,20 +169,24 @@ namespace outfitToggler
                 case 2: //Bag Variation: 5 (Draw)
                     PlayAnim("anim@heists@ornate_bank@grab_cash", "intro", 51, 1600);
                     break;
-                case 3: //Glasses Prop: 1 (Draw)
-                    PlayAnim("clothingspecs", "take_off", 51, 1400);
+                case 3: //Glasses
+                    if (ToggleProp(1)) 
+                        PlayAnim("clothingspecs", "take_off", 51, 1400);
                     break;
-                case 4: //Ear Prop: 2 (Draw)
-                    PlayAnim("mp_cp_stolen_tut", "b_think", 51, 900);
+                case 4: //Ear
+                    if (ToggleProp(2))
+                        PlayAnim("mp_cp_stolen_tut", "b_think", 51, 900);
                     break;
                 case 5: //Necklace Variation: 7 (Draw)
                     PlayAnim("clothingtie", "try_tie_positive_a", 51, 2100);
                     break;
-                case 6: //Bracelet Prop: 7 (Draw)
-                    PlayAnim("nmt_3_rcm-10", "cs_nigel_dual-10", 51, 1200);
+                case 6: //Bracelet
+                    if (ToggleProp(7))
+                        PlayAnim("nmt_3_rcm-10", "cs_nigel_dual-10", 51, 1200);
                     break;
-                case 7: //Watch Prop: 6 (Draw)
-                    PlayAnim("nmt_3_rcm-10", "cs_nigel_dual-10", 51, 1200);
+                case 7: //Watch
+                    if (ToggleProp(6))
+                        PlayAnim("nmt_3_rcm-10", "cs_nigel_dual-10", 51, 1200);
                     break;
                 case 8: //Vest Variation: 9 (Draw)
                     PlayAnim("clothingtie", "try_tie_negative_a", 51, 1200);
@@ -183,8 +197,9 @@ namespace outfitToggler
                 case 10: //Shoes Variation: 6 (Draw)
                     PlayAnim("random@domestic", "pickup_low", 0, 1200);
                     break;
-                case 11: //Hat Prop: 0 (Draw)
-                    PlayAnim("mp_masks@standard_car@ds@", "put_on_mask", 51, 600);
+                case 11: //Hat
+                    if (ToggleProp(0))
+                        PlayAnim("mp_masks@standard_car@ds@", "put_on_mask", 51, 600);
                     break; 
                 case 12: //Gloves Variation: 3 (Draw)
                     PlayAnim("nmt_3_rcm-10", "cs_nigel_dual-10", 51, 1200);
