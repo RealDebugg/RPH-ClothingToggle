@@ -17,6 +17,7 @@ namespace outfitToggler
         private static Keys KeyBinding;
         private static Props pedProps = new Props();
 
+        #region Menu handling
         public static InitializationFile initialiseFile()
         {
             InitializationFile ini = new InitializationFile("Plugins/outfitSettings.ini");
@@ -124,7 +125,9 @@ namespace outfitToggler
                     break;
             }
         }
+        #endregion
 
+        #region Functions
         private static void PlayAnim(string dict, string anim, int move, int dur)
         {
             Ped myChar = Game.LocalPlayer.Character;
@@ -148,17 +151,127 @@ namespace outfitToggler
         private static bool ToggleProp(int prop) 
         {
             Ped myChar = Game.LocalPlayer.Character;
-            int currentProp = NativeFunction.Natives.GetPedPropIndex<int>(myChar, true);
-            if (currentProp != -1) //and last is null
+            int currentProp = NativeFunction.Natives.GetPedPropIndex<int>(myChar, prop);
+            int currentPropTex = NativeFunction.Natives.GetPedPropTextureIndex<int>(myChar, prop);
+            switch (prop)
             {
-                Game.DisplayNotification("haha yes.");
-                return true;
-            } else
-            {
-                Game.DisplayNotification("You dont appear to have anything to remove.");
-                return false;
+                case 0: //hat
+                    if (currentProp == -1 && pedProps._lastHatDraw == 0) 
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to remove.");
+                        return false;
+                    } 
+                    else 
+                    {
+                        if (currentProp == -1) {
+                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, pedProps._lastHatDraw, pedProps._lastHatText, true);
+                            pedProps._lastHatDraw = 0;
+                            pedProps._lastHatText = 0;
+                            return true;
+                        } else {
+                            pedProps._lastHatDraw = currentProp;
+                            pedProps._lastHatText = currentPropTex;
+                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, -1, 0, true); //0?
+                            return true;
+                        }
+                    }
+                case 1: //glasses
+                    if (currentProp == -1 && pedProps._lastGlassesDraw == 0) 
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to remove.");
+                        return false;
+                    } 
+                    else 
+                    {
+                        if (currentProp == -1) {
+                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, pedProps._lastGlassesDraw, pedProps._lastGlassesText, true);
+                            pedProps._lastGlassesDraw = 0;
+                            pedProps._lastGlassesText = 0;
+                            return true;
+                        } else {
+                            pedProps._lastGlassesDraw = currentProp;
+                            pedProps._lastGlassesText = currentPropTex;
+                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, -1, 0, true); //0?
+                            return true;
+                        }
+                    }
+                case 2: //ear
+                    if (currentProp == -1 && pedProps._lastEarDraw == 0)
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to remove.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (currentProp == -1)
+                        {
+                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, pedProps._lastEarDraw, pedProps._lastEarText, true);
+                            pedProps._lastEarDraw = 0;
+                            pedProps._lastEarText = 0;
+                            return true;
+                        }
+                        else
+                        {
+                            pedProps._lastEarDraw = currentProp;
+                            pedProps._lastEarText = currentPropTex;
+                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, -1, 0, true); //0?
+                            return true;
+                        }
+                    }
+                case 6: //watch
+                    if (currentProp == -1 && pedProps._lastWatchDraw == 0)
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to remove.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (currentProp == -1)
+                        {
+                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, pedProps._lastWatchDraw, pedProps._lastWatchText, true);
+                            pedProps._lastWatchDraw = 0;
+                            pedProps._lastWatchText = 0;
+                            return true;
+                        }
+                        else
+                        {
+                            pedProps._lastWatchDraw = currentProp;
+                            pedProps._lastWatchText = currentPropTex;
+                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, -1, 0, true); //0?
+                            return true;
+                        }
+                    }
+                case 7: //bracelet
+                    if (currentProp == -1 && pedProps._lastBraceletDraw == 0)
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to remove.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (currentProp == -1)
+                        {
+                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, pedProps._lastBraceletDraw, pedProps._lastBraceletText, true);
+                            pedProps._lastBraceletDraw = 0;
+                            pedProps._lastBraceletText = 0;
+                            return true;
+                        }
+                        else
+                        {
+                            pedProps._lastBraceletDraw = currentProp;
+                            pedProps._lastBraceletText = currentPropTex;
+                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, -1, 0, true); //0?
+                            return true;
+                        }
+                    }
+                default:
+                    return false;
             }
+            
         }
+        #endregion
+
+        #region Main function handler
         private static void SwitchClothing(int id)
         {
             switch (id)
@@ -215,7 +328,9 @@ namespace outfitToggler
                     break;
             }
         }
+        #endregion
 
+        #region Menu processor
         private static void ProcessMenus()
         {
             while (true)
@@ -228,5 +343,6 @@ namespace outfitToggler
                 }
             }
         }
+        #endregion
     }
 }

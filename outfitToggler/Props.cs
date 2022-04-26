@@ -1,20 +1,20 @@
 ﻿namespace outfitToggler
 {
-    internal class Props
+    public class Props
     {
-        int _lastGlassesDraw;
-        int _lastGlassesText;
+        public int _lastGlassesDraw { get; set; }
+        public int _lastGlassesText { get; set; }
 
-        int _lastBraceletDraw;
-        int _lastBraceletText;
+        public int _lastBraceletDraw { get; set; }
+        public int _lastBraceletText { get; set; }
 
-        int _lastEarDraw;
-        int _lastEarText;
+        public int _lastEarDraw { get; set; }
+        public int _lastEarText { get; set; }
 
-        int _lastWatchDraw;
-        int _lastWatchText;
+        public int _lastWatchDraw { get; set; }
+        public int _lastWatchText { get; set; }
 
-        int _lastHatDraw;
-        int _lastHatText;
+        public int _lastHatDraw { get; set; }
+        public int _lastHatText { get; set; }
     }
 }
