@@ -136,10 +136,31 @@ namespace outfitToggler
             myChar.Tasks.ClearSecondary();
         }
         
-        private static void ToggleVariation(int comp, int draw, int tex) 
+        private static bool ToggleVariation(int comp) 
         {
             Ped myChar = Game.LocalPlayer.Character;
             PoolHandle charHand = myChar.Handle;
+            switch (comp)
+            {
+                case 1: //mask
+                    return false;
+                case 3: //gloves
+                    return false;
+                case 4: //pants
+                    return false;
+                case 5: //bag
+                    return false;
+                case 6: //shoes
+                    return false;
+                case 7: //necklace
+                    return false;
+                case 9: //vest
+                    return false;
+                case 11: //shirt
+                    return false;
+                default:
+                    return false;
+            }
             //myChar.SetVariation(comp, draw, tex); // int componentIndex, int drawableIndex, int drawableTextureIndex
             //public void GetVariation(
             //  int componentIndex,
@@ -279,8 +300,9 @@ namespace outfitToggler
                 case 1: //Hair Variation: 2 (Draw)
                     PlayAnim("clothingtie", "check_out_a", 51, 2000);
                     break;
-                case 2: //Bag Variation: 5 (Draw)
-                    PlayAnim("anim@heists@ornate_bank@grab_cash", "intro", 51, 1600);
+                case 2: //Bag
+                    if (ToggleVariation(5))
+                        PlayAnim("anim@heists@ornate_bank@grab_cash", "intro", 51, 1600);
                     break;
                 case 3: //Glasses
                     if (ToggleProp(1)) 
@@ -290,8 +312,9 @@ namespace outfitToggler
                     if (ToggleProp(2))
                         PlayAnim("mp_cp_stolen_tut", "b_think", 51, 900);
                     break;
-                case 5: //Necklace Variation: 7 (Draw)
-                    PlayAnim("clothingtie", "try_tie_positive_a", 51, 2100);
+                case 5: //Necklace
+                    if (ToggleVariation(7))
+                        PlayAnim("clothingtie", "try_tie_positive_a", 51, 2100);
                     break;
                 case 6: //Bracelet
                     if (ToggleProp(7))
@@ -301,27 +324,33 @@ namespace outfitToggler
                     if (ToggleProp(6))
                         PlayAnim("nmt_3_rcm-10", "cs_nigel_dual-10", 51, 1200);
                     break;
-                case 8: //Vest Variation: 9 (Draw)
-                    PlayAnim("clothingtie", "try_tie_negative_a", 51, 1200);
+                case 8: //Vest
+                    if (ToggleVariation(9))
+                        PlayAnim("clothingtie", "try_tie_negative_a", 51, 1200);
                     break;
-                case 9: //Mask Variation: 1 (Draw)
-                    PlayAnim("anim@heists@ornate_bank@grab_cash", "intro", 51, 800);
+                case 9: //Mask
+                    if (ToggleVariation(1))
+                        PlayAnim("anim@heists@ornate_bank@grab_cash", "intro", 51, 800);
                     break;
-                case 10: //Shoes Variation: 6 (Draw)
-                    PlayAnim("random@domestic", "pickup_low", 0, 1200);
+                case 10: //Shoes
+                    if (ToggleVariation(6))
+                        PlayAnim("random@domestic", "pickup_low", 0, 1200);
                     break;
                 case 11: //Hat
                     if (ToggleProp(0))
                         PlayAnim("mp_masks@standard_car@ds@", "put_on_mask", 51, 600);
                     break; 
-                case 12: //Gloves Variation: 3 (Draw)
-                    PlayAnim("nmt_3_rcm-10", "cs_nigel_dual-10", 51, 1200);
+                case 12: //Gloves
+                    if (ToggleVariation(3))
+                        PlayAnim("nmt_3_rcm-10", "cs_nigel_dual-10", 51, 1200);
                     break;
-                case 13: //Pants Variation: 4 (Draw)
-                    PlayAnim("re@construction", "out_of_breath", 51, 1300);
+                case 13: //Pants
+                    if (ToggleVariation(4))
+                        PlayAnim("re@construction", "out_of_breath", 51, 1300);
                     break;
-                case 14: //Shirt Variation: 11 (Draw)
-                    PlayAnim("clothingtie", "try_tie_negative_a", 51, 1200);
+                case 14: //Shirt
+                    if (ToggleVariation(11))
+                        PlayAnim("clothingtie", "try_tie_negative_a", 51, 1200);
                     break;
                 default:
                     Game.DisplayNotification("The fuck have you done?");

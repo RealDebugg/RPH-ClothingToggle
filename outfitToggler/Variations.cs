@@ -2,28 +2,28 @@
 {
     internal class Variations
     {
-        int _lastBagDraw;
-        int _lastBagText;
+        public int _lastBagDraw { get; set; }
+        public int _lastBagText { get; set; }
 
-        int _lastNeckDraw;
-        int _lastNeckText;
+        public int _lastNeckDraw { get; set; }
+        public int _lastNeckText { get; set; }
 
-        int _lastVestDraw;
-        int _lastVestText;
+        public int _lastVestDraw { get; set; }
+        public int _lastVestText { get; set; }
 
-        int _lastMaskDraw;
-        int _lastMaskText;
+        public int _lastMaskDraw { get; set; }
+        public int _lastMaskText { get; set; }
 
-        int _lastShoesDraw;
-        int _lastShoesText;
+        public int _lastShoesDraw { get; set; }
+        public int _lastShoesText { get; set; }
 
-        int _lastGlovesDraw;
-        int _lastGlovesText;
+        public int _lastGlovesDraw { get; set; }
+        public int _lastGlovesText { get; set; }
 
-        int _lastPantsDraw;
-        int _lastPantsText;
+        public int _lastPantsDraw { get; set; }
+        public int _lastPantsText { get; set; }
 
-        int _lastShirtDraw;
-        int _lastShirtText;
+        public int _lastShirtDraw { get; set; }
+        public int _lastShirtText { get; set; }
     }
 }
