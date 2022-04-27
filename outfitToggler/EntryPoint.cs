@@ -16,6 +16,7 @@ namespace outfitToggler
         private static UIMenu mainMenu;
         private static Keys KeyBinding;
         private static Props pedProps = new Props();
+        private static Variations pedCloths = new Variations();
 
         #region Menu handling
         public static InitializationFile initialiseFile()
@@ -139,34 +140,116 @@ namespace outfitToggler
         private static bool ToggleVariation(int comp) 
         {
             Ped myChar = Game.LocalPlayer.Character;
-            PoolHandle charHand = myChar.Handle;
-            switch (comp)
+            int clothDraw = -1;
+            int clothTex = -1;
+            myChar.GetVariation(comp, out clothDraw, out clothTex);
+            Console.WriteLine(clothDraw);
+            Console.WriteLine(clothTex);
+            switch (comp) //gloves, pants, shoes, shirt
             {
                 case 1: //mask
+                    if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastMaskDraw == 0)
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (clothDraw == -1)
+                        {
+                            myChar.SetVariation(comp, pedCloths._lastMaskDraw, pedCloths._lastMaskText);
+                            pedCloths._lastMaskDraw = 0;
+                            pedCloths._lastMaskText = 0;
+                            return true;
+                        }
+                        else
+                        {
+                            pedCloths._lastMaskDraw = clothDraw;
+                            pedCloths._lastMaskText = clothTex;
+                            myChar.SetVariation(comp, 0, 0);
+                            return true;
+                        }
+                    }
+                case 3: //gloves --look into dpclothing variations.lua
                     return false;
-                case 3: //gloves
-                    return false;
-                case 4: //pants
+                case 4: //pants M:61, F:14
                     return false;
                 case 5: //bag
-                    return false;
-                case 6: //shoes
+                    if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastBagDraw == 0)
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (clothDraw == -1)
+                        {
+                            myChar.SetVariation(comp, pedCloths._lastBagDraw, pedCloths._lastBagText);
+                            pedCloths._lastBagDraw = 0;
+                            pedCloths._lastBagText = 0;
+                            return true;
+                        }
+                        else
+                        {
+                            pedCloths._lastBagDraw = clothDraw;
+                            pedCloths._lastBagText = clothTex;
+                            myChar.SetVariation(comp, 0, 0);
+                            return true;
+                        }
+                    }
+                case 6: //shoes M:34, F:35
                     return false;
                 case 7: //necklace
-                    return false;
+                    if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastNeckDraw == 0)
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (clothDraw == -1)
+                        {
+                            myChar.SetVariation(comp, pedCloths._lastNeckDraw, pedCloths._lastNeckText);
+                            pedCloths._lastNeckDraw = 0;
+                            pedCloths._lastNeckText = 0;
+                            return true;
+                        }
+                        else
+                        {
+                            pedCloths._lastNeckDraw = clothDraw;
+                            pedCloths._lastNeckText = clothTex;
+                            myChar.SetVariation(comp, 0, 0);
+                            return true;
+                        }
+                    }
                 case 9: //vest
-                    return false;
-                case 11: //shirt
+                    if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastVestDraw == 0)
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (clothDraw == -1)
+                        {
+                            myChar.SetVariation(comp, pedCloths._lastVestDraw, pedCloths._lastVestText);
+                            pedCloths._lastVestDraw = 0;
+                            pedCloths._lastVestText = 0;
+                            return true;
+                        }
+                        else
+                        {
+                            pedCloths._lastVestDraw = clothDraw;
+                            pedCloths._lastVestText = clothTex;
+                            myChar.SetVariation(comp, 0, 0);
+                            return true;
+                        }
+                    }
+                case 11: //shirt M:252, F:74
                     return false;
                 default:
                     return false;
             }
-            //myChar.SetVariation(comp, draw, tex); // int componentIndex, int drawableIndex, int drawableTextureIndex
-            //public void GetVariation(
-            //  int componentIndex,
-            //  out int drawableIndex,
-            //  out int drawableTextureIndex
-            //)
         }
 
         private static bool ToggleProp(int prop) 
@@ -179,7 +262,7 @@ namespace outfitToggler
                 case 0: //hat
                     if (currentProp == -1 && pedProps._lastHatDraw == 0) 
                     {
-                        Game.DisplayNotification("You dont appear to have anything to remove.");
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
                     } 
                     else 
@@ -200,7 +283,7 @@ namespace outfitToggler
                 case 1: //glasses
                     if (currentProp == -1 && pedProps._lastGlassesDraw == 0) 
                     {
-                        Game.DisplayNotification("You dont appear to have anything to remove.");
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
                     } 
                     else 
@@ -220,7 +303,7 @@ namespace outfitToggler
                 case 2: //ear
                     if (currentProp == -1 && pedProps._lastEarDraw == 0)
                     {
-                        Game.DisplayNotification("You dont appear to have anything to remove.");
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
                     }
                     else
@@ -243,7 +326,7 @@ namespace outfitToggler
                 case 6: //watch
                     if (currentProp == -1 && pedProps._lastWatchDraw == 0)
                     {
-                        Game.DisplayNotification("You dont appear to have anything to remove.");
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
                     }
                     else
@@ -266,7 +349,7 @@ namespace outfitToggler
                 case 7: //bracelet
                     if (currentProp == -1 && pedProps._lastBraceletDraw == 0)
                     {
-                        Game.DisplayNotification("You dont appear to have anything to remove.");
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
                     }
                     else
