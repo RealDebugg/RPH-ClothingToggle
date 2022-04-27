@@ -245,7 +245,7 @@ namespace outfitToggler
                             return true;
                         }
                     }
-                case 11: //shirt M:252, F:74
+                case 11: //shirt M:252, F:74 //undershirt(8,15,0), gloves(3,15,0), decals(10,0,0)
                     return false;
                 default:
                     return false;
