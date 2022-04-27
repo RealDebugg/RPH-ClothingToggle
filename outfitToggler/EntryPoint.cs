@@ -10,7 +10,7 @@ using RAGENativeUI.PauseMenu;
 [assembly: Plugin("Outfit Toggler", Description = "Allows you to toggle between EUP clothing | Made by Debugg#8770.", Author = "Debugg")]
 namespace outfitToggler
 {
-    public static class EntryPoint
+    public static class EntryPoint //Left: Clothing, hair, sound
     {
         private static MenuPool pool;
         private static UIMenu mainMenu;
@@ -184,7 +184,8 @@ namespace outfitToggler
                     } 
                     else 
                     {
-                        if (currentProp == -1) {
+                        if (currentProp == -1) 
+                        {
                             NativeFunction.Natives.SetPedPropIndex(myChar, prop, pedProps._lastHatDraw, pedProps._lastHatText, true);
                             pedProps._lastHatDraw = 0;
                             pedProps._lastHatText = 0;
@@ -369,6 +370,7 @@ namespace outfitToggler
                 if (Game.IsKeyDown(KeyBinding) && !UIMenu.IsAnyMenuVisible && !TabView.IsAnyPauseMenuVisible)
                 {
                     mainMenu.Visible = true;
+                    mainMenu.MouseControlsEnabled = false;
                 }
             }
         }
