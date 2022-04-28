@@ -140,12 +140,13 @@ namespace outfitToggler
         private static bool ToggleVariation(int comp) 
         {
             Ped myChar = Game.LocalPlayer.Character;
+            uint myModel = NativeFunction.Natives.GetEntityModel<uint>(myChar.Handle);
             int clothDraw = -1;
             int clothTex = -1;
             myChar.GetVariation(comp, out clothDraw, out clothTex);
             Console.WriteLine(clothDraw);
             Console.WriteLine(clothTex);
-            switch (comp) //gloves, pants, shoes, shirt
+            switch (comp) //gloves, shirt
             {
                 case 1: //mask
                     if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastMaskDraw == 0)
@@ -172,8 +173,32 @@ namespace outfitToggler
                     }
                 case 3: //gloves --look into dpclothing variations.lua
                     return false;
-                case 4: //pants M:61, F:14
-                    return false;
+                case 4: //pants
+                    if (clothDraw == 14 || clothDraw == 61 || clothDraw == -1 || clothDraw == 0 && pedCloths._lastPantsDraw == 0)
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (clothDraw == 14 || clothDraw == 61)
+                        {
+                            myChar.SetVariation(comp, pedCloths._lastPantsDraw, pedCloths._lastPantsText);
+                            pedCloths._lastPantsDraw = 0;
+                            pedCloths._lastPantsText = 0;
+                            return true;
+                        }
+                        else
+                        {
+                            pedCloths._lastPantsDraw = clothDraw;
+                            pedCloths._lastPantsText = clothTex;
+                            if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
+                                myChar.SetVariation(comp, 14, 0);
+                            else
+                                myChar.SetVariation(comp, 61, 0);
+                            return true;
+                        }
+                    }
                 case 5: //bag
                     if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastBagDraw == 0)
                     {
@@ -197,8 +222,32 @@ namespace outfitToggler
                             return true;
                         }
                     }
-                case 6: //shoes M:34, F:35
-                    return false;
+                case 6: //shoes
+                    if (clothDraw == 35 || clothDraw == 34 || clothDraw == -1 || clothDraw == 0 && pedCloths._lastShoesDraw == 0)
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (clothDraw == 35 || clothDraw == 34)
+                        {
+                            myChar.SetVariation(comp, pedCloths._lastShoesDraw, pedCloths._lastShoesText);
+                            pedCloths._lastShoesDraw = 0;
+                            pedCloths._lastShoesText = 0;
+                            return true;
+                        }
+                        else
+                        {
+                            pedCloths._lastShoesDraw = clothDraw;
+                            pedCloths._lastShoesText = clothTex;
+                            if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
+                                myChar.SetVariation(comp, 35, 0);
+                            else
+                                myChar.SetVariation(comp, 34, 0);
+                            return true;
+                        }
+                    }
                 case 7: //necklace
                     if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastNeckDraw == 0)
                     {
