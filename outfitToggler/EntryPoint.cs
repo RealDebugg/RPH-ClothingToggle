@@ -140,12 +140,10 @@ namespace outfitToggler
         private static bool ToggleVariation(int comp) 
         {
             Ped myChar = Game.LocalPlayer.Character;
-            uint myModel = NativeFunction.Natives.GetEntityModel<uint>(myChar.Handle);
+            uint myModel = NativeFunction.Natives.GetEntityModel<uint>(myChar);
             int clothDraw = -1;
             int clothTex = -1;
             myChar.GetVariation(comp, out clothDraw, out clothTex);
-            Console.WriteLine(clothDraw);
-            Console.WriteLine(clothTex);
             switch (comp) //gloves, shirt
             {
                 case 1: //mask
@@ -325,7 +323,7 @@ namespace outfitToggler
                         } else {
                             pedProps._lastHatDraw = currentProp;
                             pedProps._lastHatText = currentPropTex;
-                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, -1, 0, true); //0?
+                            NativeFunction.Natives.ClearPedProp(myChar, prop);
                             return true;
                         }
                     }
@@ -345,7 +343,7 @@ namespace outfitToggler
                         } else {
                             pedProps._lastGlassesDraw = currentProp;
                             pedProps._lastGlassesText = currentPropTex;
-                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, -1, 0, true); //0?
+                            NativeFunction.Natives.ClearPedProp(myChar, prop);
                             return true;
                         }
                     }
@@ -368,7 +366,7 @@ namespace outfitToggler
                         {
                             pedProps._lastEarDraw = currentProp;
                             pedProps._lastEarText = currentPropTex;
-                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, -1, 0, true); //0?
+                            NativeFunction.Natives.ClearPedProp(myChar, prop);
                             return true;
                         }
                     }
@@ -391,7 +389,7 @@ namespace outfitToggler
                         {
                             pedProps._lastWatchDraw = currentProp;
                             pedProps._lastWatchText = currentPropTex;
-                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, -1, 0, true); //0?
+                            NativeFunction.Natives.ClearPedProp(myChar, prop);
                             return true;
                         }
                     }
@@ -414,7 +412,7 @@ namespace outfitToggler
                         {
                             pedProps._lastBraceletDraw = currentProp;
                             pedProps._lastBraceletText = currentPropTex;
-                            NativeFunction.Natives.SetPedPropIndex(myChar, prop, -1, 0, true); //0?
+                            NativeFunction.Natives.ClearPedProp(myChar, prop);
                             return true;
                         }
                     }
