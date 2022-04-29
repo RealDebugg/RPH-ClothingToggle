@@ -10,7 +10,7 @@ using RAGENativeUI.PauseMenu;
 [assembly: Plugin("Outfit Toggler", Description = "Allows you to toggle between EUP clothing | Made by Debugg#8770.", Author = "Debugg")]
 namespace outfitToggler
 {
-    public static class EntryPoint //Left: Clothing, hair, sound
+    public static class EntryPoint //Left: Clothing, hair
     {
         private static MenuPool pool;
         private static UIMenu mainMenu;
