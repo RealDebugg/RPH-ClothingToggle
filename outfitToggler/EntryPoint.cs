@@ -17,6 +17,7 @@ namespace outfitToggler
         private static Keys KeyBinding;
         private static Props pedProps = new Props();
         private static Variations pedCloths = new Variations();
+        private static Config cfg = new Config();
 
         #region Menu handling
         public static InitializationFile initialiseFile()
@@ -35,7 +36,7 @@ namespace outfitToggler
 
         public static void Main()
         {
-            #region Keybinding
+            #region Keybinding & Config
             KeysConverter kc = new KeysConverter();
 
             try
@@ -47,6 +48,7 @@ namespace outfitToggler
                 KeyBinding = Keys.F6;
                 Game.DisplayNotification("There was an error reading the .ini file. Setting defaults...");
             }
+            LoadConfig();
             #endregion
 
             #region Menu
@@ -129,6 +131,30 @@ namespace outfitToggler
         #endregion
 
         #region Functions
+        private static void LoadBackupConfig()
+        {
+            cfg.mShoes = 34;
+            cfg.fShoes = 35;
+            cfg.mPants = 61;
+            cfg.fPants = 14;
+        }
+
+        private static void LoadConfig()
+        {
+            InitializationFile ini = initialiseFile();
+            try
+            {
+                cfg.mShoes = ini.ReadInt32("Clothing", "mShoes", 34);
+                cfg.fShoes = ini.ReadInt32("Clothing", "fShoes", 35);
+                cfg.mPants = ini.ReadInt32("Clothing", "mPants", 61);
+                cfg.fPants = ini.ReadInt32("Clothing", "fPants", 14);
+            }
+            catch (Exception)
+            {
+                LoadBackupConfig();
+            }
+        }
+
         private static void PlayAnim(string dict, string anim, int move, int dur)
         {
             Ped myChar = Game.LocalPlayer.Character;
@@ -144,7 +170,7 @@ namespace outfitToggler
             int clothDraw = -1;
             int clothTex = -1;
             myChar.GetVariation(comp, out clothDraw, out clothTex);
-            switch (comp) //gloves, shirt
+            switch (comp) //gloves, shirt //-1? (Test with MP ped)
             {
                 case 1: //mask
                     if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastMaskDraw == 0)
@@ -172,14 +198,14 @@ namespace outfitToggler
                 case 3: //gloves --look into dpclothing variations.lua
                     return false;
                 case 4: //pants
-                    if (clothDraw == 14 || clothDraw == 61 || clothDraw == -1 || clothDraw == 0 && pedCloths._lastPantsDraw == 0)
+                    if (clothDraw == cfg.fPants || clothDraw == cfg.mPants || clothDraw == -1 || clothDraw == 0 && pedCloths._lastPantsDraw == 0)
                     {
                         Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
                     }
                     else
                     {
-                        if (clothDraw == 14 || clothDraw == 61)
+                        if (clothDraw == cfg.fPants || clothDraw == cfg.mPants)
                         {
                             myChar.SetVariation(comp, pedCloths._lastPantsDraw, pedCloths._lastPantsText);
                             pedCloths._lastPantsDraw = 0;
@@ -191,9 +217,9 @@ namespace outfitToggler
                             pedCloths._lastPantsDraw = clothDraw;
                             pedCloths._lastPantsText = clothTex;
                             if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
-                                myChar.SetVariation(comp, 14, 0);
+                                myChar.SetVariation(comp, cfg.fPants, 0);
                             else
-                                myChar.SetVariation(comp, 61, 0);
+                                myChar.SetVariation(comp, cfg.mPants, 0);
                             return true;
                         }
                     }
@@ -228,7 +254,7 @@ namespace outfitToggler
                     }
                     else
                     {
-                        if (clothDraw == 35 || clothDraw == 34)
+                        if (clothDraw == cfg.fShoes || clothDraw == cfg.mShoes)
                         {
                             myChar.SetVariation(comp, pedCloths._lastShoesDraw, pedCloths._lastShoesText);
                             pedCloths._lastShoesDraw = 0;
@@ -240,9 +266,9 @@ namespace outfitToggler
                             pedCloths._lastShoesDraw = clothDraw;
                             pedCloths._lastShoesText = clothTex;
                             if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
-                                myChar.SetVariation(comp, 35, 0);
+                                myChar.SetVariation(comp, cfg.fShoes, 0);
                             else
-                                myChar.SetVariation(comp, 34, 0);
+                                myChar.SetVariation(comp, cfg.mShoes, 0);
                             return true;
                         }
                     }
