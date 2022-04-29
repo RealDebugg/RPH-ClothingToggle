@@ -247,7 +247,7 @@ namespace outfitToggler
                         }
                     }
                 case 6: //shoes
-                    if (clothDraw == 35 || clothDraw == 34 || clothDraw == -1 || clothDraw == 0 && pedCloths._lastShoesDraw == 0)
+                    if (clothDraw == cfg.mShoes || clothDraw == cfg.fShoes || clothDraw == -1 || clothDraw == 0 && pedCloths._lastShoesDraw == 0)
                     {
                         Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
