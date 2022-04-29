@@ -163,14 +163,14 @@ namespace outfitToggler
             myChar.Tasks.ClearSecondary();
         }
         
-        private static bool ToggleVariation(int comp) 
+        private static bool ToggleVariation(int comp) //gloves, shirt //-1? (Test with MP ped)
         {
             Ped myChar = Game.LocalPlayer.Character;
             uint myModel = NativeFunction.Natives.GetEntityModel<uint>(myChar);
             int clothDraw = -1;
             int clothTex = -1;
             myChar.GetVariation(comp, out clothDraw, out clothTex);
-            switch (comp) //gloves, shirt //-1? (Test with MP ped)
+            switch (comp)
             {
                 case 1: //mask
                     if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastMaskDraw == 0)
