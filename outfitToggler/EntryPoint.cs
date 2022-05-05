@@ -18,6 +18,354 @@ namespace outfitToggler
         private static Props pedProps = new Props();
         private static Variations pedCloths = new Variations();
         private static Config cfg = new Config();
+        private static Gloves mG = new Gloves();
+
+        #region Set Data
+        private static void SetMaleGloves()
+        {
+            mG.male.Add(16, 4);
+            mG.male.Add(17, 4);
+            mG.male.Add(18, 4);
+            mG.male.Add(19, 0);
+            mG.male.Add(20, 1);
+            mG.male.Add(21, 2);
+            mG.male.Add(22, 4);
+            mG.male.Add(23, 5);
+            mG.male.Add(24, 6);
+            mG.male.Add(25, 8);
+            mG.male.Add(26, 11);
+            mG.male.Add(27, 12);
+            mG.male.Add(28, 14);
+            mG.male.Add(29, 15);
+            mG.male.Add(30, 0);
+            mG.male.Add(31, 1);
+            mG.male.Add(32, 2);
+            mG.male.Add(33, 4);
+            mG.male.Add(34, 5);
+            mG.male.Add(35, 6);
+            mG.male.Add(36, 8);
+            mG.male.Add(37, 11);
+            mG.male.Add(38, 12);
+            mG.male.Add(39, 14);
+            mG.male.Add(40, 15);
+            mG.male.Add(41, 0);
+            mG.male.Add(42, 1);
+            mG.male.Add(43, 2);
+            mG.male.Add(44, 4);
+            mG.male.Add(45, 5);
+            mG.male.Add(46, 6);
+            mG.male.Add(47, 8);
+            mG.male.Add(48, 11);
+            mG.male.Add(49, 12);
+            mG.male.Add(50, 14);
+            mG.male.Add(51, 15);
+            mG.male.Add(52, 0);
+            mG.male.Add(53, 1);
+            mG.male.Add(54, 2);
+            mG.male.Add(55, 4);
+            mG.male.Add(56, 5);
+            mG.male.Add(57, 6);
+            mG.male.Add(58, 8);
+            mG.male.Add(59, 11);
+            mG.male.Add(60, 12);
+            mG.male.Add(61, 14);
+            mG.male.Add(62, 15);
+            mG.male.Add(63, 0);
+            mG.male.Add(64, 1);
+            mG.male.Add(65, 2);
+            mG.male.Add(66, 4);
+            mG.male.Add(67, 5);
+            mG.male.Add(68, 6);
+            mG.male.Add(69, 8);
+            mG.male.Add(70, 11);
+            mG.male.Add(71, 12);
+            mG.male.Add(72, 14);
+            mG.male.Add(73, 15);
+            mG.male.Add(74, 0);
+            mG.male.Add(75, 1);
+            mG.male.Add(76, 2);
+            mG.male.Add(77, 4);
+            mG.male.Add(78, 5);
+            mG.male.Add(79, 6);
+            mG.male.Add(80, 8);
+            mG.male.Add(81, 11);
+            mG.male.Add(82, 12);
+            mG.male.Add(83, 14);
+            mG.male.Add(84, 15);
+            mG.male.Add(85, 0);
+            mG.male.Add(86, 1);
+            mG.male.Add(87, 2);
+            mG.male.Add(88, 4);
+            mG.male.Add(89, 5);
+            mG.male.Add(90, 6);
+            mG.male.Add(91, 8);
+            mG.male.Add(92, 11);
+            mG.male.Add(93, 12);
+            mG.male.Add(94, 14);
+            mG.male.Add(95, 15);
+            mG.male.Add(96, 4);
+            mG.male.Add(97, 4);
+            mG.male.Add(98, 4);
+            mG.male.Add(99, 0);
+            mG.male.Add(100, 1);
+            mG.male.Add(101, 2);
+            mG.male.Add(102, 4);
+            mG.male.Add(103, 5);
+            mG.male.Add(104, 6);
+            mG.male.Add(105, 8);
+            mG.male.Add(106, 11);
+            mG.male.Add(107, 12);
+            mG.male.Add(108, 14);
+            mG.male.Add(109, 15);
+            mG.male.Add(110, 4);
+            mG.male.Add(111, 4);
+            mG.male.Add(115, 112);
+            mG.male.Add(116, 112);
+            mG.male.Add(117, 112);
+            mG.male.Add(118, 112);
+            mG.male.Add(119, 112);
+            mG.male.Add(120, 112);
+            mG.male.Add(121, 112);
+            mG.male.Add(122, 113);
+            mG.male.Add(123, 113);
+            mG.male.Add(124, 113);
+            mG.male.Add(125, 113);
+            mG.male.Add(126, 113);
+            mG.male.Add(127, 113);
+            mG.male.Add(128, 113);
+            mG.male.Add(129, 114);
+            mG.male.Add(130, 114);
+            mG.male.Add(131, 114);
+            mG.male.Add(132, 114);
+            mG.male.Add(133, 114);
+            mG.male.Add(134, 114);
+            mG.male.Add(135, 114);
+            mG.male.Add(136, 15);
+            mG.male.Add(137, 15);
+            mG.male.Add(138, 0);
+            mG.male.Add(139, 1);
+            mG.male.Add(140, 2);
+            mG.male.Add(141, 4);
+            mG.male.Add(142, 5);
+            mG.male.Add(143, 6);
+            mG.male.Add(144, 8);
+            mG.male.Add(145, 11);
+            mG.male.Add(146, 12);
+            mG.male.Add(147, 14);
+            mG.male.Add(148, 112);
+            mG.male.Add(149, 113);
+            mG.male.Add(150, 114);
+            mG.male.Add(151, 0);
+            mG.male.Add(152, 1);
+            mG.male.Add(153, 2);
+            mG.male.Add(154, 4);
+            mG.male.Add(155, 5);
+            mG.male.Add(156, 6);
+            mG.male.Add(157, 8);
+            mG.male.Add(158, 11);
+            mG.male.Add(159, 12);
+            mG.male.Add(160, 14);
+            mG.male.Add(161, 112);
+            mG.male.Add(162, 113);
+            mG.male.Add(163, 114);
+            mG.male.Add(165, 4);
+            mG.male.Add(166, 4);
+            mG.male.Add(167, 4);
+        }
+
+        private static void SetFemaleGloves()
+        {
+            mG.female.Add(16, 11);
+            mG.female.Add(17, 3);
+            mG.female.Add(18, 3);
+            mG.female.Add(19, 3);
+            mG.female.Add(20, 0);
+            mG.female.Add(21, 1);
+            mG.female.Add(22, 2);
+            mG.female.Add(23, 3);
+            mG.female.Add(24, 4);
+            mG.female.Add(25, 5);
+            mG.female.Add(26, 6);
+            mG.female.Add(27, 7);
+            mG.female.Add(28, 9);
+            mG.female.Add(29, 11);
+            mG.female.Add(30, 12);
+            mG.female.Add(31, 14);
+            mG.female.Add(32, 15);
+            mG.female.Add(33, 0);
+            mG.female.Add(34, 1);
+            mG.female.Add(35, 2);
+            mG.female.Add(36, 3);
+            mG.female.Add(37, 4);
+            mG.female.Add(38, 5);
+            mG.female.Add(39, 6);
+            mG.female.Add(40, 7);
+            mG.female.Add(41, 9);
+            mG.female.Add(42, 11);
+            mG.female.Add(43, 12);
+            mG.female.Add(44, 14);
+            mG.female.Add(45, 15);
+            mG.female.Add(46, 0);
+            mG.female.Add(47, 1);
+            mG.female.Add(48, 2);
+            mG.female.Add(49, 3);
+            mG.female.Add(50, 4);
+            mG.female.Add(51, 5);
+            mG.female.Add(52, 6);
+            mG.female.Add(53, 7);
+            mG.female.Add(54, 9);
+            mG.female.Add(55, 11);
+            mG.female.Add(56, 12);
+            mG.female.Add(57, 14);
+            mG.female.Add(58, 15);
+            mG.female.Add(59, 0);
+            mG.female.Add(60, 1);
+            mG.female.Add(61, 2);
+            mG.female.Add(62, 3);
+            mG.female.Add(63, 4);
+            mG.female.Add(64, 5);
+            mG.female.Add(65, 6);
+            mG.female.Add(66, 7);
+            mG.female.Add(67, 9);
+            mG.female.Add(68, 11);
+            mG.female.Add(69, 12);
+            mG.female.Add(70, 14);
+            mG.female.Add(71, 15);
+            mG.female.Add(72, 0);
+            mG.female.Add(73, 1);
+            mG.female.Add(74, 2);
+            mG.female.Add(75, 3);
+            mG.female.Add(76, 4);
+            mG.female.Add(77, 5);
+            mG.female.Add(78, 6);
+            mG.female.Add(79, 7);
+            mG.female.Add(80, 9);
+            mG.female.Add(81, 11);
+            mG.female.Add(82, 12);
+            mG.female.Add(83, 14);
+            mG.female.Add(84, 15);
+            mG.female.Add(85, 0);
+            mG.female.Add(86, 1);
+            mG.female.Add(87, 2);
+            mG.female.Add(88, 3);
+            mG.female.Add(89, 4);
+            mG.female.Add(90, 5);
+            mG.female.Add(91, 6);
+            mG.female.Add(92, 7);
+            mG.female.Add(93, 9);
+            mG.female.Add(94, 11);
+            mG.female.Add(95, 12);
+            mG.female.Add(96, 14);
+            mG.female.Add(97, 15);
+            mG.female.Add(98, 0);
+            mG.female.Add(99, 1);
+            mG.female.Add(100, 2);
+            mG.female.Add(101, 3);
+            mG.female.Add(102, 4);
+            mG.female.Add(103, 5);
+            mG.female.Add(104, 6);
+            mG.female.Add(105, 7);
+            mG.female.Add(106, 9);
+            mG.female.Add(107, 11);
+            mG.female.Add(108, 12);
+            mG.female.Add(109, 14);
+            mG.female.Add(110, 15);
+            mG.female.Add(111, 3);
+            mG.female.Add(112, 3);
+            mG.female.Add(113, 3);
+            mG.female.Add(114, 0);
+            mG.female.Add(115, 1);
+            mG.female.Add(116, 2);
+            mG.female.Add(117, 3);
+            mG.female.Add(118, 4);
+            mG.female.Add(119, 5);
+            mG.female.Add(120, 6);
+            mG.female.Add(121, 7);
+            mG.female.Add(122, 9);
+            mG.female.Add(123, 11);
+            mG.female.Add(124, 12);
+            mG.female.Add(125, 14);
+            mG.female.Add(126, 15);
+            mG.female.Add(127, 3);
+            mG.female.Add(128, 3);
+            mG.female.Add(132, 129);
+            mG.female.Add(133, 129);
+            mG.female.Add(134, 129);
+            mG.female.Add(135, 129);
+            mG.female.Add(136, 129);
+            mG.female.Add(137, 129);
+            mG.female.Add(138, 129);
+            mG.female.Add(139, 130);
+            mG.female.Add(140, 130);
+            mG.female.Add(141, 130);
+            mG.female.Add(142, 130);
+            mG.female.Add(143, 130);
+            mG.female.Add(144, 130);
+            mG.female.Add(145, 130);
+            mG.female.Add(146, 131);
+            mG.female.Add(147, 131);
+            mG.female.Add(148, 131);
+            mG.female.Add(149, 131);
+            mG.female.Add(150, 131);
+            mG.female.Add(151, 131);
+            mG.female.Add(152, 131);
+            mG.female.Add(154, 153);
+            mG.female.Add(155, 153);
+            mG.female.Add(156, 153);
+            mG.female.Add(157, 153);
+            mG.female.Add(158, 153);
+            mG.female.Add(159, 153);
+            mG.female.Add(160, 153);
+            mG.female.Add(162, 161);
+            mG.female.Add(163, 161);
+            mG.female.Add(164, 161);
+            mG.female.Add(165, 161);
+            mG.female.Add(166, 161);
+            mG.female.Add(167, 161);
+            mG.female.Add(168, 161);
+            mG.female.Add(169, 15);
+            mG.female.Add(170, 15);
+            mG.female.Add(171, 0);
+            mG.female.Add(172, 1);
+            mG.female.Add(173, 2);
+            mG.female.Add(174, 3);
+            mG.female.Add(175, 4);
+            mG.female.Add(176, 5);
+            mG.female.Add(177, 6);
+            mG.female.Add(178, 7);
+            mG.female.Add(179, 9);
+            mG.female.Add(180, 11);
+            mG.female.Add(181, 12);
+            mG.female.Add(182, 14);
+            mG.female.Add(183, 129);
+            mG.female.Add(184, 130);
+            mG.female.Add(185, 131);
+            mG.female.Add(186, 153);
+            mG.female.Add(187, 0);
+            mG.female.Add(188, 1);
+            mG.female.Add(189, 2);
+            mG.female.Add(190, 3);
+            mG.female.Add(191, 4);
+            mG.female.Add(192, 5);
+            mG.female.Add(193, 6);
+            mG.female.Add(194, 7);
+            mG.female.Add(195, 9);
+            mG.female.Add(196, 11);
+            mG.female.Add(197, 12);
+            mG.female.Add(198, 14);
+            mG.female.Add(199, 129);
+            mG.female.Add(200, 130);
+            mG.female.Add(201, 131);
+            mG.female.Add(202, 153);
+            mG.female.Add(203, 161);
+            mG.female.Add(204, 161);
+            mG.female.Add(206, 3);
+            mG.female.Add(207, 3);
+            mG.female.Add(208, 3);
+        }
+
+        //Hair
+        #endregion
 
         #region Menu handling
         public static InitializationFile initialiseFile()
@@ -36,6 +384,11 @@ namespace outfitToggler
 
         public static void Main()
         {
+            #region Set Data
+            SetMaleGloves();
+            SetFemaleGloves();
+            #endregion
+
             #region Keybinding & Config
             KeysConverter kc = new KeysConverter();
 
@@ -163,17 +516,17 @@ namespace outfitToggler
             myChar.Tasks.ClearSecondary();
         }
         
-        private static bool ToggleVariation(int comp) //gloves, shirt //-1? (Test with MP ped)
+        private static bool ToggleVariation(int comp) //gloves, shirt
         {
             Ped myChar = Game.LocalPlayer.Character;
             uint myModel = NativeFunction.Natives.GetEntityModel<uint>(myChar);
-            int clothDraw = -1;
-            int clothTex = -1;
+            int clothDraw;
+            int clothTex;
             myChar.GetVariation(comp, out clothDraw, out clothTex);
             switch (comp)
             {
                 case 1: //mask
-                    if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastMaskDraw == 0)
+                    if ((clothDraw == -1 || clothDraw == 0) && pedCloths._lastMaskDraw == 0)
                     {
                         Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
@@ -196,9 +549,10 @@ namespace outfitToggler
                         }
                     }
                 case 3: //gloves --look into dpclothing variations.lua
+                    //myChar.SetVariation(comp, 4, 0); --These are +1
                     return false;
                 case 4: //pants
-                    if (clothDraw == cfg.fPants || clothDraw == cfg.mPants || clothDraw == -1 || clothDraw == 0 && pedCloths._lastPantsDraw == 0)
+                    if ((clothDraw == cfg.fPants || clothDraw == cfg.mPants) && pedCloths._lastPantsDraw == 0)
                     {
                         Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
@@ -224,7 +578,7 @@ namespace outfitToggler
                         }
                     }
                 case 5: //bag
-                    if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastBagDraw == 0)
+                    if ((clothDraw == -1 || clothDraw == 0) && pedCloths._lastBagDraw == 0)
                     {
                         Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
@@ -247,7 +601,7 @@ namespace outfitToggler
                         }
                     }
                 case 6: //shoes
-                    if (clothDraw == cfg.mShoes || clothDraw == cfg.fShoes || clothDraw == -1 || clothDraw == 0 && pedCloths._lastShoesDraw == 0)
+                    if ((clothDraw == cfg.mShoes || clothDraw == cfg.fShoes) && pedCloths._lastShoesDraw == 0)
                     {
                         Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
@@ -273,7 +627,7 @@ namespace outfitToggler
                         }
                     }
                 case 7: //necklace
-                    if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastNeckDraw == 0)
+                    if ((clothDraw == -1 || clothDraw == 0) && pedCloths._lastNeckDraw == 0)
                     {
                         Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
@@ -296,7 +650,7 @@ namespace outfitToggler
                         }
                     }
                 case 9: //vest
-                    if (clothDraw == -1 || clothDraw == 0 && pedCloths._lastVestDraw == 0)
+                    if ((clothDraw == -1 || clothDraw == 0) && pedCloths._lastVestDraw == 0)
                     {
                         Game.DisplayNotification("You dont appear to have anything to toggle.");
                         return false;
