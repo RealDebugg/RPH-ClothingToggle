@@ -10,7 +10,7 @@ using RAGENativeUI.PauseMenu;
 [assembly: Plugin("Outfit Toggler", Description = "Allows you to toggle between EUP clothing | Made by Debugg#8770.", Author = "Debugg")]
 namespace outfitToggler
 {
-    public static class EntryPoint //Left: shirt, hair
+    public static class EntryPoint //Left: shirt
     {
         private static MenuPool pool;
         private static UIMenu mainMenu;
@@ -954,6 +954,75 @@ namespace outfitToggler
             }
             
         }
+
+        private static bool ToggleHair(int comp)
+        {
+            Ped myChar = Game.LocalPlayer.Character;
+            uint myModel = NativeFunction.Natives.GetEntityModel<uint>(myChar);
+            int clothDraw;
+            int clothTex;
+            myChar.GetVariation(comp, out clothDraw, out clothTex);
+            if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
+            {
+                if (!pH.female.ContainsKey(clothDraw) && pH._lastHairDraw == 0)
+                {
+                    Game.DisplayNotification("You dont appear to have anything to toggle.");
+                    return false;
+                }
+                else
+                {
+                    if (!pH.female.ContainsKey(clothDraw) && pH._lastHairDraw != 0)
+                    {
+                        myChar.SetVariation(comp, pH._lastHairDraw, pH._lastHairText);
+                        pH._lastHairDraw = 0;
+                        pH._lastHairText = 0;
+                        return true;
+                    }
+                    else if (pH.female.ContainsKey(clothDraw) && pH._lastHairDraw == 0)
+                    {
+                        pH._lastHairDraw = clothDraw;
+                        pH._lastHairText = clothTex;
+                        myChar.SetVariation(comp, pH.female[clothDraw], clothTex);
+                        return true;
+                    }
+                    else
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                if (!pH.male.ContainsKey(clothDraw) && pH._lastHairDraw == 0)
+                {
+                    Game.DisplayNotification("You dont appear to have anything to toggle.");
+                    return false;
+                }
+                else
+                {
+                    if (!pH.male.ContainsKey(clothDraw) && pH._lastHairDraw != 0)
+                    {
+                        myChar.SetVariation(comp, pH._lastHairDraw, pH._lastHairText);
+                        pH._lastHairDraw = 0;
+                        pH._lastHairText = 0;
+                        return true;
+                    }
+                    else if (pH.male.ContainsKey(clothDraw) && pH._lastHairDraw == 0)
+                    {
+                        pH._lastHairDraw = clothDraw;
+                        pH._lastHairText = clothTex;
+                        myChar.SetVariation(comp, pH.male[clothDraw], clothTex);
+                        return true;
+                    }
+                    else
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
+                        return false;
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Main function handler
@@ -962,7 +1031,8 @@ namespace outfitToggler
             switch (id)
             {
                 case 1: //Hair Variation: 2 (Draw)
-                    PlayAnim("clothingtie", "check_out_a", 51, 2000);
+                    if (ToggleHair(2))
+                        PlayAnim("clothingtie", "check_out_a", 51, 2000);
                     break;
                 case 2: //Bag
                     if (ToggleVariation(5))
