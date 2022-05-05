@@ -549,8 +549,21 @@ namespace outfitToggler
                         }
                     }
                 case 3: //gloves --look into dpclothing variations.lua
-                    //myChar.SetVariation(comp, 4, 0); --These are +1
-                    return false;
+                    if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
+                    {
+                        if (mG.female.ContainsKey(clothDraw))
+                        {
+
+                        } 
+                    } else
+                    {
+                        if (mG.male.ContainsKey(clothDraw))
+                        {
+
+                        }
+                    }
+                        //myChar.SetVariation(comp, 4, 0); --These are +1
+                        return false;
                 case 4: //pants
                     if ((clothDraw == cfg.fPants || clothDraw == cfg.mPants) && pedCloths._lastPantsDraw == 0)
                     {
