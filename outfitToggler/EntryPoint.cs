@@ -955,6 +955,16 @@ namespace outfitToggler
             
         }
 
+        private static bool IsMPPed()
+        {
+            Ped myChar = Game.LocalPlayer.Character;
+            uint myModel = NativeFunction.Natives.GetEntityModel<uint>(myChar);
+            if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01") || myModel == NativeFunction.Natives.GetHashKey<uint>("mp_m_freemode_01"))
+                return true;
+            else
+                return false;
+        }
+
         private static bool ToggleHair(int comp)
         {
             Ped myChar = Game.LocalPlayer.Character;
@@ -1102,8 +1112,14 @@ namespace outfitToggler
                 pool.ProcessMenus();
                 if (Game.IsKeyDown(KeyBinding) && !UIMenu.IsAnyMenuVisible && !TabView.IsAnyPauseMenuVisible)
                 {
-                    mainMenu.Visible = true;
-                    mainMenu.MouseControlsEnabled = false;
+                    if (IsMPPed())
+                    {
+                        mainMenu.Visible = true;
+                        mainMenu.MouseControlsEnabled = false;
+                    } else
+                    {
+                        Game.DisplayNotification("~r~~h~Error~h~~s~: Switch to a MP ped to open this menu!!");
+                    }
                 }
             }
         }
