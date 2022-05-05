@@ -10,7 +10,7 @@ using RAGENativeUI.PauseMenu;
 [assembly: Plugin("Outfit Toggler", Description = "Allows you to toggle between EUP clothing | Made by Debugg#8770.", Author = "Debugg")]
 namespace outfitToggler
 {
-    public static class EntryPoint //Left: Clothing, hair
+    public static class EntryPoint //Left: shirt, hair
     {
         private static MenuPool pool;
         private static UIMenu mainMenu;
@@ -19,6 +19,7 @@ namespace outfitToggler
         private static Variations pedCloths = new Variations();
         private static Config cfg = new Config();
         private static Gloves mG = new Gloves();
+        private static Hair pH = new Hair();
 
         #region Set Data
         private static void SetMaleGloves()
@@ -364,7 +365,45 @@ namespace outfitToggler
             mG.female.Add(208, 3);
         }
 
-        //Hair
+        private static void SetMaleHair()
+        {
+            pH.male.Add(7, 15);
+            pH.male.Add(9, 43);
+            pH.male.Add(11, 43);
+            pH.male.Add(16, 43);
+            pH.male.Add(17, 43);
+            pH.male.Add(20, 43);
+            pH.male.Add(22, 43);
+            pH.male.Add(45, 43);
+            pH.male.Add(47, 43);
+            pH.male.Add(49, 43);
+            pH.male.Add(51, 43);
+            pH.male.Add(52, 43);
+            pH.male.Add(53, 43);
+            pH.male.Add(56, 43);
+            pH.male.Add(58, 43);
+        }
+
+        private static void SetFemaleHair()
+        {
+            pH.female.Add(1, 49);
+            pH.female.Add(2, 49);
+            pH.female.Add(7, 49);
+            pH.female.Add(9, 49);
+            pH.female.Add(10, 49);
+            pH.female.Add(11, 48);
+            pH.female.Add(14, 53);
+            pH.female.Add(15, 42);
+            pH.female.Add(21, 42);
+            pH.female.Add(23, 42);
+            pH.female.Add(39, 49);
+            pH.female.Add(40, 49);
+            pH.female.Add(45, 49);
+            pH.female.Add(54, 55);
+            pH.female.Add(59, 42);
+            pH.female.Add(68, 53);
+            pH.female.Add(76, 48);
+        }
         #endregion
 
         #region Menu handling
@@ -387,6 +426,8 @@ namespace outfitToggler
             #region Set Data
             SetMaleGloves();
             SetFemaleGloves();
+            SetMaleHair();
+            SetFemaleHair();
             #endregion
 
             #region Keybinding & Config
@@ -490,6 +531,9 @@ namespace outfitToggler
             cfg.fShoes = 35;
             cfg.mPants = 61;
             cfg.fPants = 14;
+            cfg.Undershirt = 15;
+            cfg.fShirt = 74;
+            cfg.mShirt = 252;
         }
 
         private static void LoadConfig()
@@ -501,6 +545,9 @@ namespace outfitToggler
                 cfg.fShoes = ini.ReadInt32("Clothing", "fShoes", 35);
                 cfg.mPants = ini.ReadInt32("Clothing", "mPants", 61);
                 cfg.fPants = ini.ReadInt32("Clothing", "fPants", 14);
+                cfg.Undershirt = ini.ReadInt32("Clothing", "Undershirt", 15);
+                cfg.fShirt = ini.ReadInt32("Clothing", "fShirt", 74);
+                cfg.mShirt = ini.ReadInt32("Clothing", "mShirt", 252);
             }
             catch (Exception)
             {
@@ -516,7 +563,7 @@ namespace outfitToggler
             myChar.Tasks.ClearSecondary();
         }
         
-        private static bool ToggleVariation(int comp) //shirt
+        private static bool ToggleVariation(int comp)
         {
             Ped myChar = Game.LocalPlayer.Character;
             uint myModel = NativeFunction.Natives.GetEntityModel<uint>(myChar);
@@ -730,8 +777,56 @@ namespace outfitToggler
                             return true;
                         }
                     }
-                case 11: //shirt M:252, F:74 //undershirt(8,15,0), gloves(3,15,0), decals(10,0,0)
-                    return false;
+                case 11: //shirt
+                    if ((clothDraw == cfg.fShirt || clothDraw == cfg.mShirt) && pedCloths._lastShirtDraw == 0)
+                    {
+                        Game.DisplayNotification("You dont appear to have anything to toggle.");
+                        return false;
+                    }
+                    else
+                    {
+                        Game.DisplayNotification("What");
+                        if (clothDraw == cfg.fShirt || clothDraw == cfg.fShirt)
+                        {
+                            myChar.SetVariation(comp, pedCloths._lastShirtDraw, pedCloths._lastShirtDraw);
+                            myChar.SetVariation(8, pedCloths._lastUndershirtDraw, pedCloths._lastUndershirtText);
+                            myChar.SetVariation(10, pedCloths._lastDecalDraw, pedCloths._lastDecalText);
+                            pedCloths._lastShirtDraw = 0;
+                            pedCloths._lastShirtText = 0;
+                            pedCloths._lastUndershirtDraw = 0;
+                            pedCloths._lastUndershirtText = 0;
+                            pedCloths._lastDecalDraw = 0;
+                            pedCloths._lastDecalText = 0;
+                            return true;
+                        }
+                        else
+                        {
+                            int USDraw;
+                            int USText;
+                            int DecalDraw;
+                            int DecalText;
+                            myChar.GetVariation(10, out DecalDraw, out DecalText);
+                            myChar.GetVariation(8, out USDraw, out USText);
+                            pedCloths._lastShirtDraw = clothDraw;
+                            pedCloths._lastShirtText = clothTex;
+                            pedCloths._lastUndershirtDraw = USDraw;
+                            pedCloths._lastUndershirtText = USText;
+                            pedCloths._lastDecalDraw = DecalDraw;
+                            pedCloths._lastDecalText = DecalText;
+
+                            if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
+                            {
+                                myChar.SetVariation(comp, cfg.fShirt, 0);
+                            }
+                            else
+                            {
+                                myChar.SetVariation(comp, cfg.mShirt, 0);
+                            }
+                            myChar.SetVariation(10, 0, 0);
+                            myChar.SetVariation(8, cfg.Undershirt, 0);
+                            return true;
+                        }
+                    }
                 default:
                     return false;
             }

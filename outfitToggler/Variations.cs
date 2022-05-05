@@ -25,5 +25,9 @@
 
         public int _lastShirtDraw { get; set; }
         public int _lastShirtText { get; set; }
+        public int _lastUndershirtDraw { get; set; }
+        public int _lastUndershirtText { get; set; }
+        public int _lastDecalDraw { get; set; }
+        public int _lastDecalText { get; set; }
     }
 }
