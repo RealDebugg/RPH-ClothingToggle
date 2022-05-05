@@ -10,8 +10,9 @@ using RAGENativeUI.PauseMenu;
 [assembly: Plugin("Outfit Toggler", Description = "Allows you to toggle between EUP clothing | Made by Debugg#8770.", Author = "Debugg")]
 namespace outfitToggler
 {
-    public static class EntryPoint //Left: shirt
+    public static class EntryPoint
     {
+        #region Variables
         private static MenuPool pool;
         private static UIMenu mainMenu;
         private static Keys KeyBinding;
@@ -20,6 +21,7 @@ namespace outfitToggler
         private static Config cfg = new Config();
         private static Gloves mG = new Gloves();
         private static Hair pH = new Hair();
+        #endregion
 
         #region Set Data
         private static void SetMaleGloves()
@@ -462,7 +464,7 @@ namespace outfitToggler
             UIMenuItem Gloves = new UIMenuItem("Gloves", "Toggle gloves");
             UIMenuItem Pants = new UIMenuItem("Pants", "Toggle pants");
             UIMenuItem Shirt = new UIMenuItem("Shirt", "Toggle shirt");
-            mainMenu.AddItems(Shirt, Pants, Gloves, Hat, Shoes, Mask, Vest, Watch, Bracelet, Necklace, Ear, Glasses, bag, hair);
+            mainMenu.AddItems(Pants, Gloves, Hat, Shoes, Mask, Vest, Watch, Bracelet, Necklace, Ear, Glasses, bag, hair, Shirt);
             mainMenu.OnItemSelect += ItemSelectHandler;
             pool.Add(mainMenu);
             GameFiber.StartNew(ProcessMenus);
@@ -785,10 +787,9 @@ namespace outfitToggler
                     }
                     else
                     {
-                        Game.DisplayNotification("What");
-                        if (clothDraw == cfg.fShirt || clothDraw == cfg.fShirt)
+                        if (clothDraw == cfg.fShirt || clothDraw == cfg.mShirt)
                         {
-                            myChar.SetVariation(comp, pedCloths._lastShirtDraw, pedCloths._lastShirtDraw);
+                            myChar.SetVariation(comp, pedCloths._lastShirtDraw, pedCloths._lastShirtText);
                             myChar.SetVariation(8, pedCloths._lastUndershirtDraw, pedCloths._lastUndershirtText);
                             myChar.SetVariation(10, pedCloths._lastDecalDraw, pedCloths._lastDecalText);
                             pedCloths._lastShirtDraw = 0;
@@ -813,7 +814,6 @@ namespace outfitToggler
                             pedCloths._lastUndershirtText = USText;
                             pedCloths._lastDecalDraw = DecalDraw;
                             pedCloths._lastDecalText = DecalText;
-
                             if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
                             {
                                 myChar.SetVariation(comp, cfg.fShirt, 0);
