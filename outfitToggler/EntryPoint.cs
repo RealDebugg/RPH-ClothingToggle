@@ -516,7 +516,7 @@ namespace outfitToggler
             myChar.Tasks.ClearSecondary();
         }
         
-        private static bool ToggleVariation(int comp) //gloves, shirt
+        private static bool ToggleVariation(int comp) //shirt
         {
             Ped myChar = Game.LocalPlayer.Character;
             uint myModel = NativeFunction.Natives.GetEntityModel<uint>(myChar);
@@ -548,22 +548,67 @@ namespace outfitToggler
                             return true;
                         }
                     }
-                case 3: //gloves --look into dpclothing variations.lua
+                case 3: //gloves
                     if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
                     {
-                        if (mG.female.ContainsKey(clothDraw))
+                        if (!mG.female.ContainsKey(clothDraw) && pedCloths._lastGlovesDraw == 0)
                         {
-
-                        } 
-                    } else
+                            Game.DisplayNotification("You dont appear to have anything to toggle.");
+                            return false;
+                        }
+                        else
+                        {
+                            if (!mG.female.ContainsKey(clothDraw) && pedCloths._lastGlovesDraw != 0)
+                            {
+                                myChar.SetVariation(comp, pedCloths._lastGlovesDraw, pedCloths._lastGlovesText);
+                                pedCloths._lastGlovesDraw = 0;
+                                pedCloths._lastGlovesText = 0;
+                                return true;
+                            }
+                            else if (mG.female.ContainsKey(clothDraw) && pedCloths._lastGlovesDraw == 0)
+                            {
+                                pedCloths._lastGlovesDraw = clothDraw;
+                                pedCloths._lastGlovesText = clothTex;
+                                myChar.SetVariation(comp, mG.female[clothDraw], 0);
+                                return true;
+                            }
+                            else
+                            {
+                                Game.DisplayNotification("You dont appear to have anything to toggle.");
+                                return false;
+                            }
+                        }
+                    } 
+                    else
                     {
-                        if (mG.male.ContainsKey(clothDraw))
+                        if(!mG.male.ContainsKey(clothDraw) && pedCloths._lastGlovesDraw == 0)
                         {
-
+                            Game.DisplayNotification("You dont appear to have anything to toggle.");
+                            return false;
+                        } 
+                        else
+                        {
+                            if (!mG.male.ContainsKey(clothDraw) && pedCloths._lastGlovesDraw != 0)
+                            {
+                                myChar.SetVariation(comp, pedCloths._lastGlovesDraw, pedCloths._lastGlovesText);
+                                pedCloths._lastGlovesDraw = 0;
+                                pedCloths._lastGlovesText = 0;
+                                return true;
+                            } 
+                            else if (mG.male.ContainsKey(clothDraw) && pedCloths._lastGlovesDraw == 0)
+                            {
+                                pedCloths._lastGlovesDraw = clothDraw;
+                                pedCloths._lastGlovesText = clothTex;
+                                myChar.SetVariation(comp, mG.male[clothDraw], 0);
+                                return true;
+                            } 
+                            else
+                            {
+                                Game.DisplayNotification("You dont appear to have anything to toggle.");
+                                return false;
+                            }
                         }
                     }
-                        //myChar.SetVariation(comp, 4, 0); --These are +1
-                        return false;
                 case 4: //pants
                     if ((clothDraw == cfg.fPants || clothDraw == cfg.mPants) && pedCloths._lastPantsDraw == 0)
                     {
