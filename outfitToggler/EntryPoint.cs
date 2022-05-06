@@ -1046,7 +1046,7 @@ namespace outfitToggler
                     break;
                 case 2: //Bag
                     if (ToggleVariation(5))
-                        PlayAnim("anim@heists@ornate_bank@grab_cash", "intro", 51, 1600);
+                        PlayAnim("clothingtie", "try_tie_negative_a", 51, 1600);
                     break;
                 case 3: //Glasses
                     if (ToggleProp(1)) 

@@ -20,3 +20,8 @@ C:\Users\Debugg\Desktop\git\RPH-ClothingToggle\outfitToggler\obj\Debug\outfitTog
 C:\Users\Debugg\Desktop\git\RPH-ClothingToggle\outfitToggler\obj\Debug\outfitToggler.dll
 C:\Users\Debugg\Desktop\git\RPH-ClothingToggle\outfitToggler\obj\Debug\outfitToggler.pdb
 C:\Users\naim1\Desktop\git\RPH-ClothingToggle\outfitToggler\obj\Debug\outfitToggler.csproj.AssemblyReference.cache
+C:\Users\Debugg\Desktop\git\RPH-ClothingToggle\outfitToggler\bin\Debug\outfitToggler.dll
+C:\Users\Debugg\Desktop\git\RPH-ClothingToggle\outfitToggler\bin\Debug\outfitToggler.pdb
+C:\Users\Debugg\Desktop\git\RPH-ClothingToggle\outfitToggler\bin\Debug\RAGENativeUI.dll
+C:\Users\Debugg\Desktop\git\RPH-ClothingToggle\outfitToggler\bin\Debug\RagePluginHookSDK.dll
+C:\Users\Debugg\Desktop\git\RPH-ClothingToggle\outfitToggler\obj\Debug\outfitToggler.csproj.CopyComplete
