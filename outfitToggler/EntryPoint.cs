@@ -451,7 +451,7 @@ namespace outfitToggler
             pool = new MenuPool();
             mainMenu = new UIMenu("Outfit Menu", "Select an option to toggle it.");
             UIMenuItem hair = new UIMenuItem("Hair", "Toggle hair bun or down");
-            UIMenuItem bag = new UIMenuItem("Bag", "Open/Close bag");
+            UIMenuItem bag = new UIMenuItem("Bag", "Toggle bag");
             UIMenuItem Glasses = new UIMenuItem("Glasses", "Toggle glasses");
             UIMenuItem Ear = new UIMenuItem("Ear", "Toggle ear accessory");
             UIMenuItem Necklace = new UIMenuItem("Necklace", "Toggle necklace");
