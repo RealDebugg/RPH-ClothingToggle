@@ -21,6 +21,7 @@ namespace outfitToggler
         private static Config cfg = new Config();
         private static Gloves mG = new Gloves();
         private static Hair pH = new Hair();
+        private static bool isToggle = true;
         #endregion
 
         #region Set Data
@@ -420,6 +421,7 @@ namespace outfitToggler
         {
             InitializationFile ini = initialiseFile();
             string keyBinding = ini.ReadString("Keybindings", "openMenuBinding", "F6");
+            isToggle = ini.ReadBoolean("Keybindings", "ToggleKey", true);
             return keyBinding;
         }
 
@@ -1116,10 +1118,16 @@ namespace outfitToggler
                     {
                         mainMenu.Visible = true;
                         mainMenu.MouseControlsEnabled = false;
-                    } else
+                    }
+                    else
                     {
                         Game.DisplayNotification("~r~~h~Error~h~~s~: Switch to a MP ped to open this menu!!");
                     }
+                }
+                
+                if (!Game.IsKeyDown(KeyBinding) && !isToggle && mainMenu.Visible)
+                {
+                    mainMenu.Visible = false;
                 }
             }
         }
