@@ -29,5 +29,11 @@
         public int _lastUndershirtText { get; set; }
         public int _lastDecalDraw { get; set; }
         public int _lastDecalText { get; set; }
+
+        public int _lastBagsDraw { get; set; }
+        public int _lastBagsText { get; set; }
+
+        public int _lastJacketsDraw { get; set; }
+        public int _lastJacketsText { get; set; }
     }
 }

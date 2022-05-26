@@ -16,5 +16,8 @@
 
         public int _lastHatDraw { get; set; }
         public int _lastHatText { get; set; }
+
+        public int _lastVisorDraw { get; set; }
+        public int _lastVisorText { get; set; }
     }
 }

@@ -16,397 +16,17 @@ namespace outfitToggler
         private static MenuPool pool;
         private static UIMenu mainMenu;
         private static Keys KeyBinding;
+        private static Keys GloveKey;
+        private static Keys GlassKey;
         private static Props pedProps = new Props();
         private static Variations pedCloths = new Variations();
         private static Config cfg = new Config();
         private static Gloves mG = new Gloves();
+        private static Jackets mJ = new Jackets();
+        private static Bags mB = new Bags();
+        private static Visor mV = new Visor();
         private static Hair pH = new Hair();
         private static bool isToggle = true;
-        #endregion
-
-        #region Set Data
-        private static void SetMaleGloves()
-        {
-            mG.male.Add(16, 4);
-            mG.male.Add(17, 4);
-            mG.male.Add(18, 4);
-            mG.male.Add(19, 0);
-            mG.male.Add(20, 1);
-            mG.male.Add(21, 2);
-            mG.male.Add(22, 4);
-            mG.male.Add(23, 5);
-            mG.male.Add(24, 6);
-            mG.male.Add(25, 8);
-            mG.male.Add(26, 11);
-            mG.male.Add(27, 12);
-            mG.male.Add(28, 14);
-            mG.male.Add(29, 15);
-            mG.male.Add(30, 0);
-            mG.male.Add(31, 1);
-            mG.male.Add(32, 2);
-            mG.male.Add(33, 4);
-            mG.male.Add(34, 5);
-            mG.male.Add(35, 6);
-            mG.male.Add(36, 8);
-            mG.male.Add(37, 11);
-            mG.male.Add(38, 12);
-            mG.male.Add(39, 14);
-            mG.male.Add(40, 15);
-            mG.male.Add(41, 0);
-            mG.male.Add(42, 1);
-            mG.male.Add(43, 2);
-            mG.male.Add(44, 4);
-            mG.male.Add(45, 5);
-            mG.male.Add(46, 6);
-            mG.male.Add(47, 8);
-            mG.male.Add(48, 11);
-            mG.male.Add(49, 12);
-            mG.male.Add(50, 14);
-            mG.male.Add(51, 15);
-            mG.male.Add(52, 0);
-            mG.male.Add(53, 1);
-            mG.male.Add(54, 2);
-            mG.male.Add(55, 4);
-            mG.male.Add(56, 5);
-            mG.male.Add(57, 6);
-            mG.male.Add(58, 8);
-            mG.male.Add(59, 11);
-            mG.male.Add(60, 12);
-            mG.male.Add(61, 14);
-            mG.male.Add(62, 15);
-            mG.male.Add(63, 0);
-            mG.male.Add(64, 1);
-            mG.male.Add(65, 2);
-            mG.male.Add(66, 4);
-            mG.male.Add(67, 5);
-            mG.male.Add(68, 6);
-            mG.male.Add(69, 8);
-            mG.male.Add(70, 11);
-            mG.male.Add(71, 12);
-            mG.male.Add(72, 14);
-            mG.male.Add(73, 15);
-            mG.male.Add(74, 0);
-            mG.male.Add(75, 1);
-            mG.male.Add(76, 2);
-            mG.male.Add(77, 4);
-            mG.male.Add(78, 5);
-            mG.male.Add(79, 6);
-            mG.male.Add(80, 8);
-            mG.male.Add(81, 11);
-            mG.male.Add(82, 12);
-            mG.male.Add(83, 14);
-            mG.male.Add(84, 15);
-            mG.male.Add(85, 0);
-            mG.male.Add(86, 1);
-            mG.male.Add(87, 2);
-            mG.male.Add(88, 4);
-            mG.male.Add(89, 5);
-            mG.male.Add(90, 6);
-            mG.male.Add(91, 8);
-            mG.male.Add(92, 11);
-            mG.male.Add(93, 12);
-            mG.male.Add(94, 14);
-            mG.male.Add(95, 15);
-            mG.male.Add(96, 4);
-            mG.male.Add(97, 4);
-            mG.male.Add(98, 4);
-            mG.male.Add(99, 0);
-            mG.male.Add(100, 1);
-            mG.male.Add(101, 2);
-            mG.male.Add(102, 4);
-            mG.male.Add(103, 5);
-            mG.male.Add(104, 6);
-            mG.male.Add(105, 8);
-            mG.male.Add(106, 11);
-            mG.male.Add(107, 12);
-            mG.male.Add(108, 14);
-            mG.male.Add(109, 15);
-            mG.male.Add(110, 4);
-            mG.male.Add(111, 4);
-            mG.male.Add(115, 112);
-            mG.male.Add(116, 112);
-            mG.male.Add(117, 112);
-            mG.male.Add(118, 112);
-            mG.male.Add(119, 112);
-            mG.male.Add(120, 112);
-            mG.male.Add(121, 112);
-            mG.male.Add(122, 113);
-            mG.male.Add(123, 113);
-            mG.male.Add(124, 113);
-            mG.male.Add(125, 113);
-            mG.male.Add(126, 113);
-            mG.male.Add(127, 113);
-            mG.male.Add(128, 113);
-            mG.male.Add(129, 114);
-            mG.male.Add(130, 114);
-            mG.male.Add(131, 114);
-            mG.male.Add(132, 114);
-            mG.male.Add(133, 114);
-            mG.male.Add(134, 114);
-            mG.male.Add(135, 114);
-            mG.male.Add(136, 15);
-            mG.male.Add(137, 15);
-            mG.male.Add(138, 0);
-            mG.male.Add(139, 1);
-            mG.male.Add(140, 2);
-            mG.male.Add(141, 4);
-            mG.male.Add(142, 5);
-            mG.male.Add(143, 6);
-            mG.male.Add(144, 8);
-            mG.male.Add(145, 11);
-            mG.male.Add(146, 12);
-            mG.male.Add(147, 14);
-            mG.male.Add(148, 112);
-            mG.male.Add(149, 113);
-            mG.male.Add(150, 114);
-            mG.male.Add(151, 0);
-            mG.male.Add(152, 1);
-            mG.male.Add(153, 2);
-            mG.male.Add(154, 4);
-            mG.male.Add(155, 5);
-            mG.male.Add(156, 6);
-            mG.male.Add(157, 8);
-            mG.male.Add(158, 11);
-            mG.male.Add(159, 12);
-            mG.male.Add(160, 14);
-            mG.male.Add(161, 112);
-            mG.male.Add(162, 113);
-            mG.male.Add(163, 114);
-            mG.male.Add(165, 4);
-            mG.male.Add(166, 4);
-            mG.male.Add(167, 4);
-        }
-
-        private static void SetFemaleGloves()
-        {
-            mG.female.Add(16, 11);
-            mG.female.Add(17, 3);
-            mG.female.Add(18, 3);
-            mG.female.Add(19, 3);
-            mG.female.Add(20, 0);
-            mG.female.Add(21, 1);
-            mG.female.Add(22, 2);
-            mG.female.Add(23, 3);
-            mG.female.Add(24, 4);
-            mG.female.Add(25, 5);
-            mG.female.Add(26, 6);
-            mG.female.Add(27, 7);
-            mG.female.Add(28, 9);
-            mG.female.Add(29, 11);
-            mG.female.Add(30, 12);
-            mG.female.Add(31, 14);
-            mG.female.Add(32, 15);
-            mG.female.Add(33, 0);
-            mG.female.Add(34, 1);
-            mG.female.Add(35, 2);
-            mG.female.Add(36, 3);
-            mG.female.Add(37, 4);
-            mG.female.Add(38, 5);
-            mG.female.Add(39, 6);
-            mG.female.Add(40, 7);
-            mG.female.Add(41, 9);
-            mG.female.Add(42, 11);
-            mG.female.Add(43, 12);
-            mG.female.Add(44, 14);
-            mG.female.Add(45, 15);
-            mG.female.Add(46, 0);
-            mG.female.Add(47, 1);
-            mG.female.Add(48, 2);
-            mG.female.Add(49, 3);
-            mG.female.Add(50, 4);
-            mG.female.Add(51, 5);
-            mG.female.Add(52, 6);
-            mG.female.Add(53, 7);
-            mG.female.Add(54, 9);
-            mG.female.Add(55, 11);
-            mG.female.Add(56, 12);
-            mG.female.Add(57, 14);
-            mG.female.Add(58, 15);
-            mG.female.Add(59, 0);
-            mG.female.Add(60, 1);
-            mG.female.Add(61, 2);
-            mG.female.Add(62, 3);
-            mG.female.Add(63, 4);
-            mG.female.Add(64, 5);
-            mG.female.Add(65, 6);
-            mG.female.Add(66, 7);
-            mG.female.Add(67, 9);
-            mG.female.Add(68, 11);
-            mG.female.Add(69, 12);
-            mG.female.Add(70, 14);
-            mG.female.Add(71, 15);
-            mG.female.Add(72, 0);
-            mG.female.Add(73, 1);
-            mG.female.Add(74, 2);
-            mG.female.Add(75, 3);
-            mG.female.Add(76, 4);
-            mG.female.Add(77, 5);
-            mG.female.Add(78, 6);
-            mG.female.Add(79, 7);
-            mG.female.Add(80, 9);
-            mG.female.Add(81, 11);
-            mG.female.Add(82, 12);
-            mG.female.Add(83, 14);
-            mG.female.Add(84, 15);
-            mG.female.Add(85, 0);
-            mG.female.Add(86, 1);
-            mG.female.Add(87, 2);
-            mG.female.Add(88, 3);
-            mG.female.Add(89, 4);
-            mG.female.Add(90, 5);
-            mG.female.Add(91, 6);
-            mG.female.Add(92, 7);
-            mG.female.Add(93, 9);
-            mG.female.Add(94, 11);
-            mG.female.Add(95, 12);
-            mG.female.Add(96, 14);
-            mG.female.Add(97, 15);
-            mG.female.Add(98, 0);
-            mG.female.Add(99, 1);
-            mG.female.Add(100, 2);
-            mG.female.Add(101, 3);
-            mG.female.Add(102, 4);
-            mG.female.Add(103, 5);
-            mG.female.Add(104, 6);
-            mG.female.Add(105, 7);
-            mG.female.Add(106, 9);
-            mG.female.Add(107, 11);
-            mG.female.Add(108, 12);
-            mG.female.Add(109, 14);
-            mG.female.Add(110, 15);
-            mG.female.Add(111, 3);
-            mG.female.Add(112, 3);
-            mG.female.Add(113, 3);
-            mG.female.Add(114, 0);
-            mG.female.Add(115, 1);
-            mG.female.Add(116, 2);
-            mG.female.Add(117, 3);
-            mG.female.Add(118, 4);
-            mG.female.Add(119, 5);
-            mG.female.Add(120, 6);
-            mG.female.Add(121, 7);
-            mG.female.Add(122, 9);
-            mG.female.Add(123, 11);
-            mG.female.Add(124, 12);
-            mG.female.Add(125, 14);
-            mG.female.Add(126, 15);
-            mG.female.Add(127, 3);
-            mG.female.Add(128, 3);
-            mG.female.Add(132, 129);
-            mG.female.Add(133, 129);
-            mG.female.Add(134, 129);
-            mG.female.Add(135, 129);
-            mG.female.Add(136, 129);
-            mG.female.Add(137, 129);
-            mG.female.Add(138, 129);
-            mG.female.Add(139, 130);
-            mG.female.Add(140, 130);
-            mG.female.Add(141, 130);
-            mG.female.Add(142, 130);
-            mG.female.Add(143, 130);
-            mG.female.Add(144, 130);
-            mG.female.Add(145, 130);
-            mG.female.Add(146, 131);
-            mG.female.Add(147, 131);
-            mG.female.Add(148, 131);
-            mG.female.Add(149, 131);
-            mG.female.Add(150, 131);
-            mG.female.Add(151, 131);
-            mG.female.Add(152, 131);
-            mG.female.Add(154, 153);
-            mG.female.Add(155, 153);
-            mG.female.Add(156, 153);
-            mG.female.Add(157, 153);
-            mG.female.Add(158, 153);
-            mG.female.Add(159, 153);
-            mG.female.Add(160, 153);
-            mG.female.Add(162, 161);
-            mG.female.Add(163, 161);
-            mG.female.Add(164, 161);
-            mG.female.Add(165, 161);
-            mG.female.Add(166, 161);
-            mG.female.Add(167, 161);
-            mG.female.Add(168, 161);
-            mG.female.Add(169, 15);
-            mG.female.Add(170, 15);
-            mG.female.Add(171, 0);
-            mG.female.Add(172, 1);
-            mG.female.Add(173, 2);
-            mG.female.Add(174, 3);
-            mG.female.Add(175, 4);
-            mG.female.Add(176, 5);
-            mG.female.Add(177, 6);
-            mG.female.Add(178, 7);
-            mG.female.Add(179, 9);
-            mG.female.Add(180, 11);
-            mG.female.Add(181, 12);
-            mG.female.Add(182, 14);
-            mG.female.Add(183, 129);
-            mG.female.Add(184, 130);
-            mG.female.Add(185, 131);
-            mG.female.Add(186, 153);
-            mG.female.Add(187, 0);
-            mG.female.Add(188, 1);
-            mG.female.Add(189, 2);
-            mG.female.Add(190, 3);
-            mG.female.Add(191, 4);
-            mG.female.Add(192, 5);
-            mG.female.Add(193, 6);
-            mG.female.Add(194, 7);
-            mG.female.Add(195, 9);
-            mG.female.Add(196, 11);
-            mG.female.Add(197, 12);
-            mG.female.Add(198, 14);
-            mG.female.Add(199, 129);
-            mG.female.Add(200, 130);
-            mG.female.Add(201, 131);
-            mG.female.Add(202, 153);
-            mG.female.Add(203, 161);
-            mG.female.Add(204, 161);
-            mG.female.Add(206, 3);
-            mG.female.Add(207, 3);
-            mG.female.Add(208, 3);
-        }
-
-        private static void SetMaleHair()
-        {
-            pH.male.Add(7, 15);
-            pH.male.Add(9, 43);
-            pH.male.Add(11, 43);
-            pH.male.Add(16, 43);
-            pH.male.Add(17, 43);
-            pH.male.Add(20, 43);
-            pH.male.Add(22, 43);
-            pH.male.Add(45, 43);
-            pH.male.Add(47, 43);
-            pH.male.Add(49, 43);
-            pH.male.Add(51, 43);
-            pH.male.Add(52, 43);
-            pH.male.Add(53, 43);
-            pH.male.Add(56, 43);
-            pH.male.Add(58, 43);
-        }
-
-        private static void SetFemaleHair()
-        {
-            pH.female.Add(1, 49);
-            pH.female.Add(2, 49);
-            pH.female.Add(7, 49);
-            pH.female.Add(9, 49);
-            pH.female.Add(10, 49);
-            pH.female.Add(11, 48);
-            pH.female.Add(14, 53);
-            pH.female.Add(15, 42);
-            pH.female.Add(21, 42);
-            pH.female.Add(23, 42);
-            pH.female.Add(39, 49);
-            pH.female.Add(40, 49);
-            pH.female.Add(45, 49);
-            pH.female.Add(54, 55);
-            pH.female.Add(59, 42);
-            pH.female.Add(68, 53);
-            pH.female.Add(76, 48);
-        }
         #endregion
 
         #region Menu handling
@@ -420,20 +40,16 @@ namespace outfitToggler
         public static String getMyKeyBinding()
         {
             InitializationFile ini = initialiseFile();
+            KeysConverter kc = new KeysConverter();
             string keyBinding = ini.ReadString("Keybindings", "openMenuBinding", "F6");
             isToggle = ini.ReadBoolean("Keybindings", "ToggleKey", true);
+            GlassKey = (Keys)kc.ConvertFromString(ini.ReadString("Keybindings", "toggGlasses", "V"));
+            GloveKey = (Keys)kc.ConvertFromString(ini.ReadString("Keybindings", "toggGloves", "G"));
             return keyBinding;
         }
 
         public static void Main()
         {
-            #region Set Data
-            SetMaleGloves();
-            SetFemaleGloves();
-            SetMaleHair();
-            SetFemaleHair();
-            #endregion
-
             #region Keybinding & Config
             KeysConverter kc = new KeysConverter();
 
@@ -444,6 +60,8 @@ namespace outfitToggler
             catch
             {
                 KeyBinding = Keys.F6;
+                GloveKey = Keys.G;
+                GlassKey = Keys.V;
                 Game.DisplayNotification("There was an error reading the .ini file. Setting defaults...");
             }
             LoadConfig();
@@ -466,7 +84,10 @@ namespace outfitToggler
             UIMenuItem Gloves = new UIMenuItem("Gloves", "Toggle gloves");
             UIMenuItem Pants = new UIMenuItem("Pants", "Toggle pants");
             UIMenuItem Shirt = new UIMenuItem("Shirt", "Toggle shirt");
-            mainMenu.AddItems(Pants, Gloves, Hat, Shoes, Mask, Vest, Watch, Bracelet, Necklace, Ear, Glasses, bag, hair, Shirt);
+            UIMenuItem Visor = new UIMenuItem("Visor", "Toggle hat variation");
+            UIMenuItem Jacket = new UIMenuItem("Jacket", "Toggle Jacket");
+            UIMenuItem Bags = new UIMenuItem("Bag O/C", "Opens or closes your bag");
+            mainMenu.AddItems(Pants, Gloves, Hat, Shoes, Mask, Vest, Watch, Bracelet, Necklace, Ear, Glasses, bag, hair, Shirt, Visor, Jacket, Bags);
             mainMenu.OnItemSelect += ItemSelectHandler;
             pool.Add(mainMenu);
             GameFiber.StartNew(ProcessMenus);
@@ -520,6 +141,15 @@ namespace outfitToggler
                 case "Shirt":
                     SwitchClothing(14);
                     break;
+                case "Visor":
+                    SwitchClothing(15);
+                    break;
+                case "Jacket":
+                    SwitchClothing(16);
+                    break;
+                case "Bag O/C":
+                    SwitchClothing(17);
+                    break;
 
                 default:
                     Game.DisplayNotification("An error occurred???");
@@ -567,6 +197,205 @@ namespace outfitToggler
             myChar.Tasks.ClearSecondary();
         }
         
+        private static bool ToggleVars(int comp, int prop)
+        {
+            Ped myChar = Game.LocalPlayer.Character;
+            uint myModel = NativeFunction.Natives.GetEntityModel<uint>(myChar);
+            int clothDraw;
+            int clothTex;
+            myChar.GetVariation(comp, out clothDraw, out clothTex);
+            int currentProp = NativeFunction.Natives.GetPedPropIndex<int>(myChar, prop);
+            int currentPropTex = NativeFunction.Natives.GetPedPropTextureIndex<int>(myChar, prop);
+            switch (comp)
+            {
+                case 0: //Visor
+                    if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
+                    {
+                        if (!mV.female.ContainsKey(currentProp) && pedProps._lastVisorDraw == 0)
+                        {
+                            Game.DisplayNotification("You dont appear to have anything to toggle.");
+                            return false;
+                        }
+                        else
+                        {
+                            if (!mV.female.ContainsKey(currentProp) && pedProps._lastVisorDraw != 0)
+                            {
+                                NativeFunction.Natives.SetPedPropIndex(myChar, prop, pedProps._lastVisorDraw, pedProps._lastVisorText, true);
+                                pedProps._lastVisorDraw = 0;
+                                pedProps._lastVisorText = 0;
+                                return true;
+                            }
+                            else if (mV.female.ContainsKey(currentProp) && pedProps._lastVisorDraw == 0)
+                            {
+                                pedProps._lastVisorDraw = currentProp;
+                                pedProps._lastVisorText = currentPropTex;
+                                NativeFunction.Natives.SetPedPropIndex(myChar, prop, mV.female[currentProp], currentPropTex, true);
+                                return true;
+                            }
+                            else
+                            {
+                                Game.DisplayNotification("You dont appear to have anything to toggle.");
+                                return false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!mV.male.ContainsKey(currentProp) && pedProps._lastVisorDraw == 0)
+                        {
+                            Game.DisplayNotification("You dont appear to have anything to toggle.");
+                            return false;
+                        }
+                        else
+                        {
+                            if (!mV.male.ContainsKey(currentProp) && pedProps._lastVisorDraw != 0)
+                            {
+                                NativeFunction.Natives.SetPedPropIndex(myChar, prop, pedProps._lastVisorDraw, pedProps._lastVisorText, true);
+                                pedProps._lastVisorDraw = 0;
+                                pedProps._lastVisorText = 0;
+                                return true;
+                            }
+                            else if (mV.male.ContainsKey(currentProp) && pedProps._lastVisorDraw == 0)
+                            {
+                                pedProps._lastVisorDraw = currentProp;
+                                pedProps._lastVisorText = currentPropTex;
+                                NativeFunction.Natives.SetPedPropIndex(myChar, prop, mV.male[currentProp], currentPropTex, true);
+                                return true;
+                            }
+                            else
+                            {
+                                Game.DisplayNotification("You dont appear to have anything to toggle.");
+                                return false;
+                            }
+                        }
+                    }
+                case 11: //Jacket
+                    if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
+                    {
+                        if (!mJ.female.ContainsKey(clothDraw) && pedCloths._lastJacketsDraw == 0)
+                        {
+                            Game.DisplayNotification("You dont appear to have anything to toggle.");
+                            return false;
+                        }
+                        else
+                        {
+                            if (!mJ.female.ContainsKey(clothDraw) && pedCloths._lastJacketsDraw != 0)
+                            {
+                                myChar.SetVariation(comp, pedCloths._lastJacketsDraw, pedCloths._lastJacketsText);
+                                pedCloths._lastJacketsDraw = 0;
+                                pedCloths._lastJacketsText = 0;
+                                return true;
+                            }
+                            else if (mJ.female.ContainsKey(clothDraw) && pedCloths._lastJacketsDraw == 0)
+                            {
+                                pedCloths._lastJacketsDraw = clothDraw;
+                                pedCloths._lastJacketsText = clothTex;
+                                myChar.SetVariation(comp, mJ.female[clothDraw], 0);
+                                return true;
+                            }
+                            else
+                            {
+                                Game.DisplayNotification("You dont appear to have anything to toggle.");
+                                return false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!mJ.male.ContainsKey(clothDraw) && pedCloths._lastJacketsDraw == 0)
+                        {
+                            Game.DisplayNotification("You dont appear to have anything to toggle.");
+                            return false;
+                        }
+                        else
+                        {
+                            if (!mJ.male.ContainsKey(clothDraw) && pedCloths._lastJacketsDraw != 0)
+                            {
+                                myChar.SetVariation(comp, pedCloths._lastJacketsDraw, pedCloths._lastJacketsText);
+                                pedCloths._lastJacketsDraw = 0;
+                                pedCloths._lastJacketsText = 0;
+                                return true;
+                            }
+                            else if (mJ.male.ContainsKey(clothDraw) && pedCloths._lastJacketsDraw == 0)
+                            {
+                                pedCloths._lastJacketsDraw = clothDraw;
+                                pedCloths._lastJacketsText = clothTex;
+                                myChar.SetVariation(comp, mJ.male[clothDraw], 0);
+                                return true;
+                            }
+                            else
+                            {
+                                Game.DisplayNotification("You dont appear to have anything to toggle.");
+                                return false;
+                            }
+                        }
+                    }
+                case 5: //Bags
+                    if (myModel == NativeFunction.Natives.GetHashKey<uint>("mp_f_freemode_01"))
+                    {
+                        if (!mB.female.ContainsKey(clothDraw) && pedCloths._lastBagsDraw == 0)
+                        {
+                            Game.DisplayNotification("You dont appear to have anything to toggle.");
+                            return false;
+                        }
+                        else
+                        {
+                            if (!mB.female.ContainsKey(clothDraw) && pedCloths._lastBagsDraw != 0)
+                            {
+                                myChar.SetVariation(comp, pedCloths._lastBagsDraw, pedCloths._lastBagsText);
+                                pedCloths._lastBagsDraw = 0;
+                                pedCloths._lastBagsText = 0;
+                                return true;
+                            }
+                            else if (mB.female.ContainsKey(clothDraw) && pedCloths._lastBagsDraw == 0)
+                            {
+                                pedCloths._lastBagsDraw = clothDraw;
+                                pedCloths._lastBagsText = clothTex;
+                                myChar.SetVariation(comp, mB.female[clothDraw], 0);
+                                return true;
+                            }
+                            else
+                            {
+                                Game.DisplayNotification("You dont appear to have anything to toggle.");
+                                return false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!mB.male.ContainsKey(clothDraw) && pedCloths._lastBagsDraw == 0)
+                        {
+                            Game.DisplayNotification("You dont appear to have anything to toggle.");
+                            return false;
+                        }
+                        else
+                        {
+                            if (!mB.male.ContainsKey(clothDraw) && pedCloths._lastBagsDraw != 0)
+                            {
+                                myChar.SetVariation(comp, pedCloths._lastBagsDraw, pedCloths._lastBagsText);
+                                pedCloths._lastBagsDraw = 0;
+                                pedCloths._lastBagsText = 0;
+                                return true;
+                            }
+                            else if (mB.male.ContainsKey(clothDraw) && pedCloths._lastBagsDraw == 0)
+                            {
+                                pedCloths._lastBagsDraw = clothDraw;
+                                pedCloths._lastBagsText = clothTex;
+                                myChar.SetVariation(comp, mB.male[clothDraw], 0);
+                                return true;
+                            }
+                            else
+                            {
+                                Game.DisplayNotification("You dont appear to have anything to toggle.");
+                                return false;
+                            }
+                        }
+                    }
+                default:
+                    return false;
+            }
+        }
+
         private static bool ToggleVariation(int comp)
         {
             Ped myChar = Game.LocalPlayer.Character;
@@ -584,7 +413,7 @@ namespace outfitToggler
                     }
                     else
                     {
-                        if (clothDraw == -1)
+                        if (clothDraw == -1 || clothDraw == 0)
                         {
                             myChar.SetVariation(comp, pedCloths._lastMaskDraw, pedCloths._lastMaskText);
                             pedCloths._lastMaskDraw = 0;
@@ -694,7 +523,7 @@ namespace outfitToggler
                     }
                     else
                     {
-                        if (clothDraw == -1)
+                        if (clothDraw == -1 || clothDraw == 0)
                         {
                             myChar.SetVariation(comp, pedCloths._lastBagDraw, pedCloths._lastBagText);
                             pedCloths._lastBagDraw = 0;
@@ -766,7 +595,7 @@ namespace outfitToggler
                     }
                     else
                     {
-                        if (clothDraw == -1)
+                        if (clothDraw == -1 || clothDraw == 0)
                         {
                             myChar.SetVariation(comp, pedCloths._lastVestDraw, pedCloths._lastVestText);
                             pedCloths._lastVestDraw = 0;
@@ -1098,6 +927,18 @@ namespace outfitToggler
                     if (ToggleVariation(11))
                         PlayAnim("clothingtie", "try_tie_negative_a", 51, 1200);
                     break;
+                case 15: //Visor (PROP 0)
+                    if (ToggleVars(0, 0))
+                        PlayAnim("mp_masks@standard_car@ds@", "put_on_mask", 51, 600);
+                    break;
+                case 16: //Jacket
+                    if (ToggleVars(11, 0))
+                        PlayAnim("missmic4", "michael_tux_fidget", 51, 1500);
+                    break;
+                case 17: //Bag O/C (DRAWABLE 5, VARIATION)
+                    if (ToggleVars(5, 0))
+                        PlayAnim("anim@heists@ornate_bank@grab_cash", "intro", 51, 1600);
+                    break;
                 default:
                     Game.DisplayNotification("The fuck have you done?");
                     break;
@@ -1112,22 +953,53 @@ namespace outfitToggler
             {
                 GameFiber.Yield();
                 pool.ProcessMenus();
-                if (Game.IsKeyDown(KeyBinding) && !UIMenu.IsAnyMenuVisible && !TabView.IsAnyPauseMenuVisible)
+
+                if(!UIMenu.IsAnyMenuVisible)
                 {
-                    if (IsMPPed())
+                    if (Game.IsKeyDown(GloveKey))
                     {
-                        mainMenu.Visible = true;
-                        mainMenu.MouseControlsEnabled = false;
+                        SwitchClothing(12);
+                    }
+
+                    if (Game.IsKeyDown(GlassKey))
+                    {
+                        SwitchClothing(3);
+                    }
+                }
+
+                if (isToggle)
+                {
+                    if (Game.IsKeyDown(KeyBinding) && !UIMenu.IsAnyMenuVisible && !TabView.IsAnyPauseMenuVisible)
+                    {
+                        if (IsMPPed())
+                        {
+                            mainMenu.Visible = true;
+                            mainMenu.MouseControlsEnabled = false;
+                        }
+                        else
+                        {
+                            Game.DisplayNotification("~r~~h~Error~h~~s~: Switch to a MP ped to open this menu!!");
+                        }
+                    }
+                }
+                else
+                {
+                    if (Game.IsKeyDownRightNow(KeyBinding))
+                    {
+                        if (IsMPPed())
+                        {
+                            mainMenu.Visible = true;
+                            mainMenu.MouseControlsEnabled = false;
+                        }
+                        else
+                        {
+                            Game.DisplayNotification("~r~~h~Error~h~~s~: Switch to a MP ped to open this menu!!");
+                        }
                     }
                     else
                     {
-                        Game.DisplayNotification("~r~~h~Error~h~~s~: Switch to a MP ped to open this menu!!");
+                        mainMenu.Visible = false;
                     }
-                }
-                
-                if (!Game.IsKeyDown(KeyBinding) && !isToggle && mainMenu.Visible)
-                {
-                    mainMenu.Visible = false;
                 }
             }
         }
