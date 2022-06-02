@@ -18,6 +18,7 @@ namespace outfitToggler
         private static Keys KeyBinding;
         private static Keys GloveKey;
         private static Keys GlassKey;
+        private static Keys ModifierKey;
         private static Props pedProps = new Props();
         private static Variations pedCloths = new Variations();
         private static Config cfg = new Config();
@@ -27,6 +28,8 @@ namespace outfitToggler
         private static Visor mV = new Visor();
         private static Hair pH = new Hair();
         private static bool isToggle = true;
+        private static bool EnableQuickKey = true;
+        private static bool UseModifierKey = true;
         #endregion
 
         #region Menu handling
@@ -43,6 +46,9 @@ namespace outfitToggler
             KeysConverter kc = new KeysConverter();
             string keyBinding = ini.ReadString("Keybindings", "openMenuBinding", "F6");
             isToggle = ini.ReadBoolean("Keybindings", "ToggleKey", true);
+            EnableQuickKey = ini.ReadBoolean("Keybindings", "EnableQuickKey", true);
+            UseModifierKey = ini.ReadBoolean("Keybindings", "UseModifierKey", true);
+            ModifierKey = (Keys)kc.ConvertFromString(ini.ReadString("Keybindings", "ModifierKey", "LShiftKey"));
             GlassKey = (Keys)kc.ConvertFromString(ini.ReadString("Keybindings", "toggGlasses", "V"));
             GloveKey = (Keys)kc.ConvertFromString(ini.ReadString("Keybindings", "toggGloves", "G"));
             return keyBinding;
@@ -52,18 +58,7 @@ namespace outfitToggler
         {
             #region Keybinding & Config
             KeysConverter kc = new KeysConverter();
-
-            try
-            {
-                KeyBinding = (Keys)kc.ConvertFromString(getMyKeyBinding());
-            }
-            catch
-            {
-                KeyBinding = Keys.F6;
-                GloveKey = Keys.G;
-                GlassKey = Keys.V;
-                Game.DisplayNotification("There was an error reading the .ini file. Setting defaults...");
-            }
+            KeyBinding = (Keys)kc.ConvertFromString(getMyKeyBinding());
             LoadConfig();
             #endregion
 
@@ -159,34 +154,16 @@ namespace outfitToggler
         #endregion
 
         #region Functions
-        private static void LoadBackupConfig()
-        {
-            cfg.mShoes = 34;
-            cfg.fShoes = 35;
-            cfg.mPants = 61;
-            cfg.fPants = 14;
-            cfg.Undershirt = 15;
-            cfg.fShirt = 74;
-            cfg.mShirt = 252;
-        }
-
         private static void LoadConfig()
         {
             InitializationFile ini = initialiseFile();
-            try
-            {
-                cfg.mShoes = ini.ReadInt32("Clothing", "mShoes", 34);
-                cfg.fShoes = ini.ReadInt32("Clothing", "fShoes", 35);
-                cfg.mPants = ini.ReadInt32("Clothing", "mPants", 61);
-                cfg.fPants = ini.ReadInt32("Clothing", "fPants", 14);
-                cfg.Undershirt = ini.ReadInt32("Clothing", "Undershirt", 15);
-                cfg.fShirt = ini.ReadInt32("Clothing", "fShirt", 74);
-                cfg.mShirt = ini.ReadInt32("Clothing", "mShirt", 252);
-            }
-            catch (Exception)
-            {
-                LoadBackupConfig();
-            }
+            cfg.mShoes = ini.ReadInt32("Clothing", "mShoes", 34);
+            cfg.fShoes = ini.ReadInt32("Clothing", "fShoes", 35);
+            cfg.mPants = ini.ReadInt32("Clothing", "mPants", 61);
+            cfg.fPants = ini.ReadInt32("Clothing", "fPants", 14);
+            cfg.Undershirt = ini.ReadInt32("Clothing", "Undershirt", 15);
+            cfg.fShirt = ini.ReadInt32("Clothing", "fShirt", 74);
+            cfg.mShirt = ini.ReadInt32("Clothing", "mShirt", 252);
         }
 
         private static void PlayAnim(string dict, string anim, int move, int dur)
@@ -954,16 +931,34 @@ namespace outfitToggler
                 GameFiber.Yield();
                 pool.ProcessMenus();
 
-                if(!UIMenu.IsAnyMenuVisible)
+                if(!UIMenu.IsAnyMenuVisible && EnableQuickKey)
                 {
-                    if (Game.IsKeyDown(GloveKey))
+                    if (UseModifierKey)
                     {
-                        SwitchClothing(12);
-                    }
+                        if (Game.GetKeyboardState().IsDown(ModifierKey))
+                        {
+                            if (Game.IsKeyDown(GloveKey))
+                            {
+                                SwitchClothing(12);
+                            }
 
-                    if (Game.IsKeyDown(GlassKey))
+                            if (Game.IsKeyDown(GlassKey))
+                            {
+                                SwitchClothing(3);
+                            }
+                        }
+                    } 
+                    else if (!UseModifierKey)
                     {
-                        SwitchClothing(3);
+                        if (Game.IsKeyDown(GloveKey))
+                        {
+                            SwitchClothing(12);
+                        }
+
+                        if (Game.IsKeyDown(GlassKey))
+                        {
+                            SwitchClothing(3);
+                        }
                     }
                 }
 
